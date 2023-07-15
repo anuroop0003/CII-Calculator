@@ -9,11 +9,18 @@ const CustomSelect = ({
   name,
   value,
   multiple,
+  placeholder,
 }) => {
   return (
     <div className="custom-select-container flex-grid-body">
       {label && <p>{label}</p>}
-      <select name={name} value={value} onChange={onChange} multiple={multiple}>
+      <select
+        placeholder={placeholder}
+        name={name}
+        value={value}
+        onChange={onChange}
+        multiple={multiple}
+      >
         {option.map((item) => (
           <option key={item.label} value={item.value}>
             {item.label}

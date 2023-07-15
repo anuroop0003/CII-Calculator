@@ -40,8 +40,20 @@ const HomePage = () => {
     <Formik
       validationSchema={schema}
       initialValues={{
+        // name: "a",
+        // // email: "1",
+        // email: "anuroop@gmail.com",
+        // vesselname: "a",
+        // grossTonnage: "a",
+        // shipowner: "a",
+        // ismmanager: "a",
+        // typeofvessel: "a",
+        // deadweight: "a",
+        // imonumber: "a",
+        // yearofbuild: "a",
+        // numberoffuels: "5",
+        // numberofyears: [2012, 2013, 2023],
         name: "",
-        email: "",
         email: "",
         vesselname: "",
         grossTonnage: "",
@@ -68,7 +80,6 @@ const HomePage = () => {
         handleSubmit,
       }) => (
         <>
-          {console.log(values)}
           <Header />
           <div className="personal-info-container">
             <p className="personal-info-container-title">

@@ -1,40 +1,5 @@
-.custom-table-container {
-  width: 100%;
-  /* border: 1px solid #ced4da; */
-  border-radius: 5px;
-  border-spacing: 0;
-}
-
-/* Head styling */
-.custom-table-thead tr th {
-  border: 1px solid #ced4da;
-  /* border-bottom: 1px solid #ced4da; */
-  white-space: nowrap;
-  padding: 10px;
-}
-
-.custom-table-thead tr th:first-child {
-  position: sticky;
-  left: 0;
-  top: 0;
-  width: 100px;
-  background-color: white;
-}
-
-/* Body styling */
-.custom-table-tbody tr td {
-  border: 1px solid #ced4da;
-  /* border-bottom: 1px solid #ced4da; */
-  white-space: nowrap;
-  padding: 10px;
-}
-
-.custom-table-tbody tr td:first-child {
-  position: sticky;
-  left: 0;
-  top: 0;
-  width: 100px;
-  background-color: white;
+.rdt_TableCell div {
+  width: 100% !important;
 }
 
 /* Scollbar Style */
