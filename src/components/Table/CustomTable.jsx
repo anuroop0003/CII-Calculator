@@ -1,6 +1,5 @@
 import { useState } from "react";
 import DataTable, { createTheme } from "react-data-table-component";
-import { useLocation } from "react-router-dom";
 import CustomInput from "../Input/Input";
 import CustomSelect from "../Select/CustomSelect";
 import "./customtable.css";
@@ -44,8 +43,8 @@ const fuelTypeOptions = [
   { value: "Ethanol", label: "Ethanol" },
 ];
 
-function CustomTable() {
-  const { state } = useLocation();
+function CustomTable({ state }) {
+  // const { state } = useLocation();
   const [tableParameters, setTableParameters] = useState({});
 
   let columns = [];

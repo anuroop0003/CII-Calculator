@@ -1,10 +1,12 @@
 import { Formik } from "formik";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import * as Yup from "yup";
 import CustomButton from "../../components/Button/Button";
 import Header from "../../components/Header/Header";
 import Checkbox from "../../components/Input/Checkbox/Checkbox";
 import CustomInput from "../../components/Input/Input";
+import CustomTable from "../../components/Table/CustomTable";
 import "./homepage.css";
 
 const schema = Yup.object().shape({
@@ -36,39 +38,42 @@ const schema = Yup.object().shape({
 
 const HomePage = () => {
   const navigate = useNavigate();
+  const [showTable, setShowTable] = useState({ visible: false, data: {} });
   return (
     <Formik
       validationSchema={schema}
       initialValues={{
-        // name: "a",
-        // // email: "1",
-        // email: "anuroop@gmail.com",
-        // vesselname: "a",
-        // grossTonnage: "a",
-        // shipowner: "a",
-        // ismmanager: "a",
-        // typeofvessel: "a",
-        // deadweight: "a",
-        // imonumber: "a",
-        // yearofbuild: "a",
-        // numberoffuels: "5",
-        // numberofyears: [2012, 2013, 2023],
-        name: "",
-        email: "",
-        vesselname: "",
-        grossTonnage: "",
-        shipowner: "",
-        ismmanager: "",
-        typeofvessel: "",
-        deadweight: "",
-        imonumber: "",
-        yearofbuild: "",
-        numberoffuels: "",
-        numberofyears: [],
+        name: "a",
+        // email: "1",
+        email: "anuroop@gmail.com",
+        vesselname: "a",
+        grossTonnage: "a",
+        shipowner: "a",
+        ismmanager: "a",
+        typeofvessel: "a",
+        deadweight: "a",
+        imonumber: "a",
+        yearofbuild: "a",
+        numberoffuels: "5",
+        numberofyears: [2012, 2013, 2023],
+
+        // name: "",
+        // email: "",
+        // vesselname: "",
+        // grossTonnage: "",
+        // shipowner: "",
+        // ismmanager: "",
+        // typeofvessel: "",
+        // deadweight: "",
+        // imonumber: "",
+        // yearofbuild: "",
+        // numberoffuels: "",
+        // numberofyears: [],
       }}
       onSubmit={(values) => {
         // Alert the input values of the form that we filled
-        navigate("/calculate", { state: values });
+        // navigate("/calculate", { state: values });
+        setShowTable({ data: values, visible: true });
       }}
     >
       {({
@@ -215,6 +220,7 @@ const HomePage = () => {
           <div className="calculate-button-container">
             <CustomButton onClick={handleSubmit} label={"Enter Data"} />
           </div>
+          {showTable.visible && <CustomTable state={showTable.data} />}
         </>
       )}
     </Formik>
