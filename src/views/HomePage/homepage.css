@@ -1,0 +1,164 @@
+/* Personnal Inforation */
+.personal-info-container {
+  margin: 20px;
+  border: 1px solid #00000020;
+  border-radius: 5px;
+  overflow: hidden;
+  /* padding: 20px; */
+}
+
+.personal-info-container-title {
+  font-size: 24px;
+  padding: 20px;
+  background-color: aliceblue;
+}
+
+.personal-info-container-body {
+  display: flex;
+  gap: 40px;
+  padding: 20px;
+}
+
+.personal-info-container-body div {
+  width: 50%;
+}
+
+/* Vessel Inforation */
+.vessel-info-container {
+  margin: 20px;
+  border: 1px solid #00000020;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.vessel-info-container-title {
+  font-size: 24px;
+  padding: 20px;
+  background-color: aliceblue;
+}
+
+.vessel-info-container-body {
+  display: flex;
+  gap: 40px;
+  margin: 20px;
+}
+
+.vessel-info-container-body div {
+  width: 50%;
+}
+
+/* Distance and Fuels */
+
+.distance-fuel-info-container {
+  margin: 20px;
+  border: 1px solid #00000020;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.distance-fuel-info-container-title {
+  font-size: 24px;
+  padding: 20px;
+  background-color: aliceblue;
+}
+
+.distance-fuel-info-container-body {
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.distance-fuel-info-container-body p {
+  font-size: 22px;
+  text-align: center;
+}
+
+.distance-fuel-info-container-body p::after {
+  content: url(data:text/plain;base64,AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAJgCAAIwAgADOAIAA8ACAAPIAgADSAIAAkACAACwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAEAIAAigCAAPoAgAD/AIAA/wCAAP8AgAD/AIAA/wCAAP8AgAD8AIAAlgCAAAgAAAAAAAAAAAAAAAAAgAAEAIAArgCAAP8AgAD/AIAA/wCAAP8AgAD/AIAA/wCAAP8AgAD/AIAA/wCAAP8AgAC8AIAACAAAAAAAAAAAAIAAiACAAP8AgAD/AIAA/wCAAP8AgADmAIAAVgCAAFYAgADOAIAA/wCAAP8AgAD/AIAA/wCAAJgAAAAAAIAAIgCAAPoAgAD/AIAA/wCAAP8AgAD/AIAA2AAAAAAAAAAAAIAAtACAAP8AgAD/AIAA/wCAAP8AgAD8AIAAMACAAIYAgAD/AIAA/wCAAP8AgAD/AIAA/wCAANgAAAAAAAAAAACAALQAgAD/AIAA/wCAAP8AgAD/AIAA/wCAAJYAgADIAIAA/wCAAP8AgAD/AIAA/wCAAP8AgADYAAAAAAAAAAAAgAC0AIAA/wCAAP8AgAD/AIAA/wCAAP8AgADYAIAA6ACAAP8AgAD/AIAA/wCAAP8AgAD/AIAA2AAAAAAAAAAAAIAAtACAAP8AgAD/AIAA/wCAAP8AgAD/AIAA9ACAAOgAgAD/AIAA/wCAAP8AgAD/AIAA/wCAANgAAAAAAAAAAACAALQAgAD/AIAA/wCAAP8AgAD/AIAA/wCAAPQAgADGAIAA/wCAAP8AgAD/AIAA/wCAAP8AgAD6AIAA5ACAAOQAgAD2AIAA/wCAAP8AgAD/AIAA/wCAAP8AgADYAIAAhgCAAP8AgAD/AIAA/wCAAP8AgAD/AIAA/ACAAHoAgABqAIAA9ACAAP8AgAD/AIAA/wCAAP8AgAD/AIAAlgCAACQAgAD6AIAA/wCAAP8AgAD/AIAA/wCAAMgAAAAAAAAAAACAAKQAgAD/AIAA/wCAAP8AgAD/AIAA/ACAAC4AAAAAAIAAhgCAAP8AgAD/AIAA/wCAAP8AgADyAIAAPACAACwAgADiAIAA/wCAAP8AgAD/AIAA/wCAAJgAAAAAAAAAAACAAAQAgACuAIAA/wCAAP8AgAD/AIAA/wCAAP8AgAD/AIAA/wCAAP8AgAD/AIAA/wCAALoAgAAIAAAAAAAAAAAAAAAAAIAABACAAIgAgAD6AIAA/wCAAP8AgAD/AIAA/wCAAP8AgAD/AIAA/ACAAJQAgAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAJgCAAIoAgADOAIAA8ACAAPAAgADSAIAAkACAACoAAAAAAAAAAAAAAAAAAAAA+B8AAOAHAADAAwAAgYEAAIGBAAABgAAAAYAAAAGAAAABgAAAAAAAAAGAAACBgQAAgYEAAMADAADgBwAA+B8AAA==);
+  margin: 0 10px;
+  height: 32px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.date-quick-select-container {
+  display: flex;
+  gap: 20px;
+  margin: 20px 0;
+  font-size: 20px;
+  margin-bottom: 40px;
+  width: 100%;
+  justify-content: center;
+}
+
+.date-quick-select-container span {
+  padding: 10px;
+  border: 1px solid #00000020;
+  border-radius: 5px;
+  background-color: white;
+  color: black;
+}
+
+.date-quick-select-container span:hover {
+  background-color: #4bb543;
+  cursor: pointer;
+  color: white;
+}
+
+/* .distance-fuel-info-container-body {
+  display: flex;
+  gap: 40px;
+  margin: 20px 0px;
+}
+
+.distance-fuel-info-container .distance-fuel-info-container-body:last-child {
+  margin-bottom: 0;
+}
+
+.distance-fuel-info-container-body div {
+  width: 50%;
+} */
+
+/* Fule Card Styling */
+.fuel-details-card-container {
+  display: flex;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.fuel-details-card-body {
+  border: 1px solid #00000020;
+  border-radius: 5px;
+  overflow: hidden;
+  width: calc(50% - 22px);
+}
+
+.fuel-details-card-title {
+  font-size: 24px;
+  padding: 20px;
+  background-color: aliceblue;
+}
+
+.fuel-details-card-details {
+  display: flex;
+  flex-direction: column;
+  margin: 20px;
+  gap: 20px;
+}
+
+.fuel-details-card-details div {
+  width: 100%;
+}
+
+.fuel-details-card-details select {
+  text-align-last: left;
+}
+
+/* Button Container */
+.calculate-button-container {
+  display: flex;
+  justify-content: center;
+  margin: 50px 0;
+}

@@ -1,0 +1,18 @@
+* {
+  font-family: Cambria;
+  margin: 0;
+}
+
+/* Conatiner Grid handle */
+@media screen and (max-width: 750px) {
+  .flex-grid-container {
+    flex-direction: column !important;
+  }
+  .flex-grid-body {
+    width: 100% !important;
+  }
+
+  .flex-grid-fuel-details {
+    width: calc(100% - 2px) !important;
+  }
+}
