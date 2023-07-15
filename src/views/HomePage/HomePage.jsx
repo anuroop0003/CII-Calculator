@@ -40,19 +40,19 @@ const HomePage = () => {
     <Formik
       validationSchema={schema}
       initialValues={{
-        name: "a",
-        // email: "1",
-        email: "anuroop@gmail.com",
-        vesselname: "a",
-        grossTonnage: "a",
-        shipowner: "a",
-        ismmanager: "a",
-        typeofvessel: "a",
-        deadweight: "a",
-        imonumber: "a",
-        yearofbuild: "a",
-        numberoffuels: "5",
-        numberofyears: [2012, 2202, 2023],
+        name: "",
+        email: "",
+        email: "",
+        vesselname: "",
+        grossTonnage: "",
+        shipowner: "",
+        ismmanager: "",
+        typeofvessel: "",
+        deadweight: "",
+        imonumber: "",
+        yearofbuild: "",
+        numberoffuels: "",
+        numberofyears: [],
       }}
       onSubmit={(values) => {
         // Alert the input values of the form that we filled
