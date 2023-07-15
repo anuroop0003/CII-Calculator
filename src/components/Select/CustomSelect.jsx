@@ -1,16 +1,28 @@
 import "./customselect.css";
 
-const CustomSelect = ({ label, option, onChange }) => {
+const CustomSelect = ({
+  label,
+  option,
+  onChange,
+  error,
+  touched,
+  name,
+  value,
+  multiple,
+}) => {
   return (
-    <div className='custom-select-container flex-grid-body'>
-      <p>{label}</p>
-      <select onChange={onChange}>
+    <div className="custom-select-container flex-grid-body">
+      {label && <p>{label}</p>}
+      <select name={name} value={value} onChange={onChange} multiple={multiple}>
         {option.map((item) => (
           <option key={item.label} value={item.value}>
             {item.label}
           </option>
         ))}
       </select>
+      <span className="cutom-select-error-msg">
+        {error && touched && error}
+      </span>
     </div>
   );
 };

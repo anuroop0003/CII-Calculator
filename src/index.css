@@ -1,10 +1,14 @@
 * {
   font-family: Cambria;
   margin: 0;
+  font-size: 22px;
 }
 
 /* Conatiner Grid handle */
 @media screen and (max-width: 750px) {
+  * {
+    font-size: 16px;
+  }
   .flex-grid-container {
     flex-direction: column !important;
   }

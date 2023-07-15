@@ -1,12 +1,13 @@
-import Header from "./components/Header/Header";
+import { Route, Routes } from "react-router-dom";
+import CalculationPage from "./views/CalculationPage/CalculationPage";
 import HomePage from "./views/HomePage/HomePage";
 
 function App() {
   return (
-    <>
-      <Header />
-      <HomePage />
-    </>
+    <Routes path="/">
+      <Route index element={<HomePage />}></Route>
+      <Route path="/calculate" element={<CalculationPage />}></Route>
+    </Routes>
   );
 }
 

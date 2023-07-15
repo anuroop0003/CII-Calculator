@@ -1,7 +1,11 @@
 import "./button.css";
 
-const CustomButton = ({ label }) => {
-  return <button className='custom-btn'>{label}</button>;
+const CustomButton = ({ label, onClick }) => {
+  return (
+    <button type="submit" onClick={onClick} className="custom-btn">
+      {label}
+    </button>
+  );
 };
 
 export default CustomButton;

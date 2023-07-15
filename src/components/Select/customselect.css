@@ -1,5 +1,4 @@
 .custom-select-container p {
-  font-size: 22px;
   margin-bottom: 10px;
 }
 
@@ -20,5 +19,8 @@
   padding: 0 20px;
   border-radius: 5px;
   text-align-last: center;
-  font-size: 20px;
+}
+
+.cutom-select-error-msg {
+  color: red;
 }

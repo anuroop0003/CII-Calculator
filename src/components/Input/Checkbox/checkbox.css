@@ -1,0 +1,12 @@
+.checkbox-container {
+  display: flex;
+  align-items: center;
+  height: 40px;
+  gap: 5px;
+  width: 150px;
+}
+
+.checkbox-container input {
+  height: 15px;
+  width: 15px;
+}
