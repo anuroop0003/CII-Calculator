@@ -32,28 +32,36 @@ const schema = Yup.object().shape({
 
 const DetailsPage = () => {
   const navigate = useNavigate();
-  const [showTable, setShowTable] = useState({ visible: false, data: {} });
+  const [showTable, setShowTable] = useState({
+    visible: false,
+    data: { CF: 3.206 },
+  });
   return (
     <Formik
       validationSchema={schema}
       initialValues={{
-        name: "",
-        email: "",
-        vesselname: "",
-        grossTonnage: "",
-        shipowner: "",
-        ismmanager: "",
-        typeofvessel: "",
-        deadweight: "",
-        imonumber: "",
-        yearofbuild: "",
-        numberoffuels: "",
-        numberofyears: [],
+        name: "a",
+        email: "anuroop@gmail.com",
+        vesselname: "a",
+        grossTonnage: "a",
+        shipowner: "a",
+        ismmanager: "a",
+        typeofvessel: "a",
+        deadweight: "a",
+        imonumber: "a",
+        yearofbuild: "a",
+        numberoffuels: "5",
+        numberofyears: [
+          2021, 2022, 2023, 2024, 2025, 2026, 2027, 2028, 2029, 2030,
+        ],
       }}
       onSubmit={(values) => {
         // Alert the input values of the form that we filled
         // navigate("/calculate", { state: values });
-        setShowTable({ data: values, visible: true });
+        setShowTable((prev) => ({
+          data: { ...prev.data, ...values },
+          visible: true,
+        }));
       }}
     >
       {({
@@ -210,7 +218,11 @@ const DetailsPage = () => {
           <div className="calculate-button-container">
             <CustomButton onClick={handleSubmit} label={"Enter Data"} />
           </div>
-          {showTable.visible && <CustomTable state={showTable.data} />}
+          {showTable.visible && (
+            <div style={{ margin: "20px" }}>
+              <CustomTable state={showTable.data} />
+            </div>
+          )}
         </>
       )}
     </Formik>

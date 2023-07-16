@@ -21,7 +21,7 @@ const CustomSelect = ({
         onChange={onChange}
         multiple={multiple}
       >
-        <option value="" disabled selected>
+        <option value="" disabled defaultValue>
           Select your option
         </option>
         {option.map((item) => (

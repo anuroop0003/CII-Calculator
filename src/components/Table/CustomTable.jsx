@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import DataTable, { createTheme } from "react-data-table-component";
 import CustomInput from "../Input/Input";
 import CustomSelect from "../Select/CustomSelect";
@@ -9,18 +9,18 @@ createTheme(
   "solarized",
   {
     text: {
-      primary: "#DDE6ED",
-      secondary: "#2aa198",
+      primary: "black",
+      secondary: "black",
     },
     background: {
-      default: "#002b36",
+      default: "#DDE6ED",
     },
     context: {
       background: "#cb4b16",
       text: "#FFFFFF",
     },
     divider: {
-      default: "#073642",
+      default: "black",
     },
     action: {
       button: "rgba(0,0,0,.54)",
@@ -44,8 +44,10 @@ const fuelTypeOptions = [
 ];
 
 function CustomTable({ state }) {
-  // console.log("state", state.numberoffuels);
   const [tableParameters, setTableParameters] = useState({});
+  useEffect(() => {
+    window.scrollTo(0, 1100);
+  }, []);
 
   const data = [
     {
@@ -168,6 +170,50 @@ function CustomTable({ state }) {
         />
       ),
     },
+    {
+      title: "CF (t-CO2/t-Fuel)",
+      type: state["CF"],
+    },
+    {
+      title: "FC (voyage j)",
+      type: (
+        <CustomInput
+          name="FC_voyage"
+          onChange={handleValueChange}
+          placeholder={"FC Voyage"}
+        />
+      ),
+    },
+    {
+      title: "FC (electrical j)",
+      type: (
+        <CustomInput
+          name="FC_electrical"
+          onChange={handleValueChange}
+          placeholder={"FC Electrical"}
+        />
+      ),
+    },
+    {
+      title: "FC (Boiler j)",
+      type: (
+        <CustomInput
+          name="FC_boiler"
+          onChange={handleValueChange}
+          placeholder={"FC Boiler"}
+        />
+      ),
+    },
+    {
+      title: "FC (others j)",
+      type: (
+        <CustomInput
+          name="FC_other"
+          onChange={handleValueChange}
+          placeholder={"FC Others"}
+        />
+      ),
+    },
   ].filter((e) => {
     if (e.visible) {
       if (e.visible <= state.numberoffuels) {
@@ -176,18 +222,31 @@ function CustomTable({ state }) {
     } else return true;
   });
 
+  const colors = [
+    "#ADD8E6",
+    "#FF7F50",
+    "#FFB6C1",
+    "#FFFACD",
+    "#E6E6FA",
+    "#FFDAB9",
+    "#D3D3D3",
+    "#008080",
+    "#D2B48C",
+    "#00FFFF",
+  ];
+
   let columns = [];
-  state.numberofyears.forEach((item) =>
+  state.numberofyears.forEach((item, i) =>
     columns.push({
       name: item,
       selector: (row) => row.type,
-      style: (row) => ({ backgroundColor: "green" }),
+      style: (row) => ({ backgroundColor: colors[i], textAlign: "right" }),
     })
   );
   columns.unshift({
     name: "Year",
     selector: (row) => row.title,
-    style: (row) => ({ backgroundColor: "green" }),
+    style: (row) => ({ backgroundColor: "#DDE6ED" }),
   });
 
   function handleValueChange(e) {
