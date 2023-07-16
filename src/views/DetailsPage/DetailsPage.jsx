@@ -26,7 +26,7 @@ const schema = Yup.object().shape({
     .typeError("That doesn't look like a number")
     .required("Number of fuels is a required field"),
   numberofyears: Yup.array()
-    .min(3, "Must have atleast 3 years")
+    // .min(3, "Must have atleast 3 years")
     .required("Number of years is a required field"),
 });
 
