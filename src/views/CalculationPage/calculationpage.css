@@ -1,6 +1,0 @@
-/* Table */
-.table-container {
-  margin: 20px;
-  overflow-x: auto;
-  width: calc(100% - 40px);
-}

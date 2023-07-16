@@ -1,0 +1,81 @@
+/* Personnal Inforation */
+.personal-info-container {
+  margin: 20px;
+  border: 1px solid #00000020;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.personal-info-container-title {
+  padding: 20px;
+  background-color: aliceblue;
+  font-size: 25px;
+}
+
+.personal-info-container-body {
+  display: flex;
+  gap: 40px;
+  padding: 20px;
+}
+
+.personal-info-container-body div {
+  width: 50%;
+}
+
+/* Vessel Inforation */
+.vessel-info-container {
+  margin: 20px;
+  border: 1px solid #00000020;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.vessel-info-container-title {
+  padding: 20px;
+  background-color: aliceblue;
+  font-size: 25px;
+}
+
+.vessel-info-container-body {
+  display: flex;
+  gap: 40px;
+  margin: 20px;
+}
+
+.vessel-info-container-body div {
+  width: 50%;
+}
+
+/* Button Container */
+.calculate-button-container {
+  display: flex;
+  justify-content: center;
+  margin: 50px 0;
+}
+
+/* Parameters Selection */
+.parameters-selection-container {
+  margin: 20px;
+  border: 1px solid #00000020;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.parameters-selection-container-title {
+  padding: 20px;
+  background-color: aliceblue;
+  font-size: 25px;
+}
+
+.parameters-selection-container-body {
+  /* display: flex; */
+  gap: 40px;
+  margin: 20px;
+}
+
+.parameters-selection-checkbox-container {
+  display: flex;
+  width: 100% !important;
+  margin: 20px 0;
+  flex-wrap: wrap;
+}

@@ -11,7 +11,7 @@ const CustomInput = ({
 }) => {
   return (
     <div autoFocus className="custom-input-container flex-grid-body">
-      {label && <p>{label}</p>}
+      {label && <p className="custom-input-label">{label}</p>}
       <input
         placeholder={placeholder}
         value={value}
