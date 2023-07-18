@@ -21,18 +21,18 @@ const CustomSelect = ({
         onChange={onChange}
         multiple={multiple}
       >
-        <option value="" disabled defaultValue>
-          Select your option
-        </option>
+        <option defaultChecked>Select your option</option>
         {option.map((item) => (
           <option key={item.label} value={item.value}>
             {item.label}
           </option>
         ))}
       </select>
-      <span className="cutom-select-error-msg">
-        {error && touched && error}
-      </span>
+      {error && (
+        <span className="cutom-select-error-msg">
+          {error && touched && error}
+        </span>
+      )}
     </div>
   );
 };

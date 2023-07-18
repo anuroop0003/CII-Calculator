@@ -9,7 +9,6 @@ const HomePage = () => {
   };
   return (
     <div className="homepage-container">
-      {/* <QuickSelector /> */}
       <div className="homepage-header">
         <span onClick={() => handleNavigation("details")}>CII Calculator</span>
         <span onClick={() => handleNavigation("details")}>Rules</span>

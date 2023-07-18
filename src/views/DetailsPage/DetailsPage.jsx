@@ -3,10 +3,10 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import * as Yup from "yup";
 import CustomButton from "../../components/Button/Button";
+import DataTabs from "../../components/DataTabs/DataTabs";
 import Checkbox from "../../components/Input/Checkbox/Checkbox";
 import CustomInput from "../../components/Input/Input";
 import CustomSelect from "../../components/Select/CustomSelect";
-import CustomTable from "../../components/Table/CustomTable";
 import "./detailspage.css";
 
 const schema = Yup.object().shape({
@@ -25,9 +25,8 @@ const schema = Yup.object().shape({
   numberoffuels: Yup.number()
     .typeError("That doesn't look like a number")
     .required("Number of fuels is a required field"),
-  numberofyears: Yup.array()
-    // .min(3, "Must have atleast 3 years")
-    .required("Number of years is a required field"),
+  numberofyears: Yup.array().min(1, "Must have atleast 1 years"),
+  // .required("Number of years is a required field"),
 });
 
 const DetailsPage = () => {
@@ -40,20 +39,18 @@ const DetailsPage = () => {
     <Formik
       validationSchema={schema}
       initialValues={{
-        name: "a",
-        email: "anuroop@gmail.com",
-        vesselname: "a",
-        grossTonnage: "a",
-        shipowner: "a",
-        ismmanager: "a",
-        typeofvessel: "a",
-        deadweight: "a",
-        imonumber: "a",
-        yearofbuild: "a",
-        numberoffuels: "5",
-        numberofyears: [
-          2021, 2022, 2023, 2024, 2025, 2026, 2027, 2028, 2029, 2030,
-        ],
+        name: "Test",
+        email: "test@gmail.com",
+        vesselname: "Test Vessel",
+        grossTonnage: "1500",
+        shipowner: "Tester",
+        ismmanager: "Zack",
+        typeofvessel: "Container Ship",
+        deadweight: "500",
+        imonumber: "123456789",
+        yearofbuild: "2000",
+        numberoffuels: "",
+        numberofyears: [],
       }}
       onSubmit={(values) => {
         // Alert the input values of the form that we filled
@@ -181,6 +178,11 @@ const DetailsPage = () => {
                 {[2022, 2023, 2024, 2025, 2026, 2027, 2028, 2029, 2030].map(
                   (item) => (
                     <Checkbox
+                      checked={
+                        values.numberofyears.includes(String(item))
+                          ? true
+                          : false
+                      }
                       name={"numberofyears"}
                       key={item}
                       value={item}
@@ -218,9 +220,27 @@ const DetailsPage = () => {
           <div className="calculate-button-container">
             <CustomButton onClick={handleSubmit} label={"Enter Data"} />
           </div>
-          {showTable.visible && (
+          {/* {showTable.visible && (
             <div style={{ margin: "20px" }}>
               <CustomTable state={showTable.data} />
+            </div>
+          )} */}
+          {/* {showTable.visible && (
+            <div
+              style={{
+                margin: "20px",
+                width: "calc(100% - 40px)",
+                display: "flex",
+                justifyContent: "center",
+                scrollBehavior: "smooth",
+              }}
+            >
+              <DataTable state={showTable.data} />
+            </div>
+          )} */}
+          {showTable.visible && (
+            <div style={{ margin: "20px" }}>
+              <DataTabs state={showTable.data} />
             </div>
           )}
         </>

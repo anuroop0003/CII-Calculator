@@ -14,11 +14,15 @@ const CustomInput = ({
       {label && <p className="custom-input-label">{label}</p>}
       <input
         placeholder={placeholder}
-        value={value}
+        value={value ?? ""}
         name={name}
         onChange={onChange}
       />
-      <span className="cutom-input-error-msg">{error && touched && error}</span>
+      {error && (
+        <span className="cutom-input-error-msg">
+          {error && touched && error}
+        </span>
+      )}
     </div>
   );
 };
