@@ -1,9 +1,16 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Checkbox from "../../Input/Checkbox/Checkbox";
 import CustomInput from "../../Input/Input";
 
 export default function FCVoyage({ tabSelected }) {
   const [fcVoyageValues, SetFCVoyageValues] = useState({});
+  useEffect(() => {
+    window.scrollTo({
+      top: 1650,
+      left: 100,
+      behavior: "smooth",
+    });
+  }, []);
   const handleChange = (e, key) => {
     SetFCVoyageValues((prev) => ({
       ...prev,

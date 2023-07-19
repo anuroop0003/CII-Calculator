@@ -1,9 +1,16 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Checkbox from "../../Input/Checkbox/Checkbox";
 import CustomInput from "../../Input/Input";
 
 const FCElectrical = ({ tabSelected }) => {
   const [fcElectrical, setFCElectrical] = useState({});
+  useEffect(() => {
+    window.scrollTo({
+      top: 1650,
+      left: 100,
+      behavior: "smooth",
+    });
+  }, []);
   const handleChange = (e, key) => {
     setFCElectrical((prev) => ({
       ...prev,

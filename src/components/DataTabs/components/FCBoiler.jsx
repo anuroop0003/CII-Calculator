@@ -1,8 +1,15 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Checkbox from "../../Input/Checkbox/Checkbox";
 
 export default function FCBoiler({ tabSelected }) {
   const [fcBoiler, setFCBoiler] = useState({});
+  useEffect(() => {
+    window.scrollTo({
+      top: 1650,
+      left: 100,
+      behavior: "smooth",
+    });
+  }, []);
   const handleCheckboxChange = (e, key) => {
     if (e.target.checked) {
       setFCBoiler((prev) => ({
@@ -28,7 +35,7 @@ export default function FCBoiler({ tabSelected }) {
       }));
     }
   };
-  console.log("fcBoiler", fcBoiler);
+  //   console.log("fcBoiler", fcBoiler);
   return (
     <div className="parameters-outer-warapper">
       <p>FC boiler j</p>

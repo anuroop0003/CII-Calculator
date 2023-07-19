@@ -1,9 +1,16 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import CustomInput from "../../Input/Input";
 import CustomSelect from "../../Select/CustomSelect";
 
 export default function TFJ({ tabSelected }) {
   const [tfjValues, setTFJValues] = useState({});
+  useEffect(() => {
+    window.scrollTo({
+      top: 1650,
+      left: 100,
+      behavior: "smooth",
+    });
+  }, []);
   const handleChange = (e, key) => {
     setTFJValues((prev) => ({
       ...prev,
