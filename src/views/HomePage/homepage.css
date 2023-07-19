@@ -5,8 +5,16 @@
   background-color: #111c55;
 }
 
+.homepage-container img {
+  height: 50px;
+  width: 50px;
+  position: absolute;
+  top: 15px;
+  left: 15px;
+}
+
 .homepage-header {
-  background-color: rgb(17, 28, 85, 0.3);
+  background-color: #091242;
   height: 80px;
   display: flex;
   padding: 0 180px;

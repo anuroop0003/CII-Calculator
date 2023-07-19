@@ -8,11 +8,14 @@ const CustomInput = ({
   onChange,
   error,
   touched,
+  type,
 }) => {
   return (
     <div autoFocus className="custom-input-container flex-grid-body">
       {label && <p className="custom-input-label">{label}</p>}
       <input
+        pattern="[0-9]{1,5}"
+        type={type ?? "text"}
         placeholder={placeholder}
         value={value ?? ""}
         name={name}

@@ -49,8 +49,8 @@ const DetailsPage = () => {
         deadweight: "500",
         imonumber: "123456789",
         yearofbuild: "2000",
-        numberoffuels: "",
-        numberofyears: [],
+        numberoffuels: "3",
+        numberofyears: [2022],
       }}
       onSubmit={(values) => {
         // Alert the input values of the form that we filled

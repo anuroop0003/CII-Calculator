@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import LogoImg from "../../assets/logo.png";
 import "./homepage.css";
 
 const HomePage = () => {
@@ -9,6 +10,7 @@ const HomePage = () => {
   };
   return (
     <div className="homepage-container">
+      <img src={LogoImg} />
       <div className="homepage-header">
         <span onClick={() => handleNavigation("details")}>CII Calculator</span>
         <span onClick={() => handleNavigation("details")}>Rules</span>
