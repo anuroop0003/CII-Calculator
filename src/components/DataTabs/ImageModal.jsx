@@ -31,19 +31,10 @@ export default function ImageModal({ tabSelected }) {
       }));
     }
   };
-  //   document
-  //     .querySelector("#open-modal-button")
-  //     .addEventListener("click", function () {
-  //       document.querySelector("#modal-container").style.display = "block";
-  //       document.querySelector("body").style.overflow = "hidden";
-  //     });
-
-  /* when modal is closed */
 
   useEffect(() => {
-    document.querySelector("main").style.overflow = "hidden";
-    // document.querySelector("body").style.overflow = "hidden";
-    return () => (document.querySelector("main").style.overflow = "visible");
+    // document.querySelector("main").style.overflow = "hidden";
+    // return () => (document.querySelector("main").style.overflow = "visible");
   }, []);
 
   return (

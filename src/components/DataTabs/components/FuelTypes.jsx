@@ -2,7 +2,6 @@ import { useContext } from "react";
 import { CalculationContext } from "../../../state management/ContextProvider";
 import CustomInput from "../../Input/Input";
 import CustomSelect from "../../Select/CustomSelect";
-import ImageModal from "../ImageModal";
 
 const fuelTypes = [
   { value: "Diesel/Gas Oil", label: "Diesel/Gas Oil" },
@@ -200,7 +199,6 @@ export default function FuelTypes({ tabSelected, state }) {
             />
           </div>
         </div>
-        {1 === 2 && <ImageModal tabSelected={tabSelected} />}
       </div>
     </>
   );
