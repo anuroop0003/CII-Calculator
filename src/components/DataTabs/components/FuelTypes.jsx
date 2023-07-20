@@ -1,6 +1,20 @@
 import { useContext } from "react";
 import { CalculationContext } from "../../../state management/ContextProvider";
 import CustomInput from "../../Input/Input";
+import CustomSelect from "../../Select/CustomSelect";
+import ImageModal from "../ImageModal";
+
+const fuelTypes = [
+  { value: "Diesel/Gas Oil", label: "Diesel/Gas Oil" },
+  { value: "LFO", label: "LFO" },
+  { value: "HFO", label: "HFO" },
+  { value: "LPG(Propane)", label: "LPG(Propane)" },
+  { value: "LPG(Butane)", label: "LPG(Butane)" },
+  { value: "LNG", label: "LNG" },
+  { value: "Methanol", label: "Methanol" },
+  { value: "Ethanol", label: "Ethanol" },
+  { value: "other", label: "Other" },
+];
 
 export default function FuelTypes({ tabSelected, state }) {
   const { parameters, setParameters } = useContext(CalculationContext);
@@ -17,6 +31,19 @@ export default function FuelTypes({ tabSelected, state }) {
       },
     }));
   };
+
+  const handleSelectChange = (e, key) => {
+    setParameters((prev) => ({
+      ...prev,
+      [tabSelected]: {
+        ...prev[tabSelected],
+        [key]: {
+          ...prev?.[tabSelected]?.[key],
+          [e.target.name]: e.target.value,
+        },
+      },
+    }));
+  };
   return (
     <>
       <div className="parameters-container">
@@ -24,12 +51,11 @@ export default function FuelTypes({ tabSelected, state }) {
           <div className="fuel-section-container">
             <div className="fuel-section-child">
               <div className="title-div">1st Type of Fuel</div>
-              <CustomInput
+              <CustomSelect
+                option={fuelTypes}
                 name="fueltype1"
-                type="number"
-                onChange={(e) => handleChange(e, "fuelData")}
+                onChange={(e) => handleSelectChange(e, "fuelData")}
                 value={parameters?.[tabSelected]?.["fuelData"]?.["fueltype1"]}
-                placeholder="Enter Value"
               />
             </div>
             <div className="fuel-section-child">
@@ -50,12 +76,11 @@ export default function FuelTypes({ tabSelected, state }) {
           <div className="fuel-section-container">
             <div className="fuel-section-child">
               <div className="title-div">2nd Type of Fuel</div>
-              <CustomInput
-                type="number"
+              <CustomSelect
+                option={fuelTypes}
                 name="fueltype2"
-                onChange={(e) => handleChange(e, "fuelData")}
+                onChange={(e) => handleSelectChange(e, "fuelData")}
                 value={parameters?.[tabSelected]?.["fuelData"]?.["fueltype2"]}
-                placeholder="Enter Value"
               />
             </div>
             <div className="fuel-section-child">
@@ -77,12 +102,11 @@ export default function FuelTypes({ tabSelected, state }) {
           <div className="fuel-section-container">
             <div className="fuel-section-child">
               <div className="title-div">3rd Type of Fuel</div>
-              <CustomInput
-                type="number"
+              <CustomSelect
+                option={fuelTypes}
                 name="fueltype3"
-                onChange={(e) => handleChange(e, "fuelData")}
+                onChange={(e) => handleSelectChange(e, "fuelData")}
                 value={parameters?.[tabSelected]?.["fuelData"]?.["fueltype3"]}
-                placeholder="Enter Value"
               />
             </div>
             <div className="fuel-section-child">
@@ -104,12 +128,11 @@ export default function FuelTypes({ tabSelected, state }) {
           <div className="fuel-section-container">
             <div className="fuel-section-child">
               <div className="title-div">4th Type of Fuel</div>
-              <CustomInput
-                type="number"
+              <CustomSelect
+                option={fuelTypes}
                 name="fueltype4"
-                onChange={(e) => handleChange(e, "fuelData")}
+                onChange={(e) => handleSelectChange(e, "fuelData")}
                 value={parameters?.[tabSelected]?.["fuelData"]?.["fueltype4"]}
-                placeholder="Enter Value"
               />
             </div>
             <div className="fuel-section-child">
@@ -131,12 +154,11 @@ export default function FuelTypes({ tabSelected, state }) {
           <div className="fuel-section-container">
             <div className="fuel-section-child">
               <div className="title-div">5th Type of Fuel</div>
-              <CustomInput
-                type="number"
+              <CustomSelect
+                option={fuelTypes}
                 name="fueltype5"
-                onChange={(e) => handleChange(e, "fuelData")}
+                onChange={(e) => handleSelectChange(e, "fuelData")}
                 value={parameters?.[tabSelected]?.["fuelData"]?.["fueltype5"]}
-                placeholder="Enter Value"
               />
             </div>
             <div className="fuel-section-child">
@@ -167,7 +189,18 @@ export default function FuelTypes({ tabSelected, state }) {
               placeholder="Enter Value"
             />
           </div>
+          <div className="fuel-section-child">
+            <div className="title-div">CF</div>
+            <CustomInput
+              type="number"
+              name="cf"
+              onChange={(e) => handleChange(e, "fuelData")}
+              value={parameters?.[tabSelected]?.["fuelData"]?.["cf"]}
+              placeholder="Enter Value"
+            />
+          </div>
         </div>
+        {1 === 2 && <ImageModal tabSelected={tabSelected} />}
       </div>
     </>
   );

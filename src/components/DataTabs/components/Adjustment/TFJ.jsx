@@ -1,7 +1,7 @@
 import { useContext } from "react";
-import { CalculationContext } from "../../../state management/ContextProvider";
-import CustomInput from "../../Input/Input";
-import CustomSelect from "../../Select/CustomSelect";
+import { CalculationContext } from "../../../../state management/ContextProvider";
+import CustomInput from "../../../Input/Input";
+import CustomSelect from "../../../Select/CustomSelect";
 
 export default function TFJ({ tabSelected }) {
   const { parameters, setParameters } = useContext(CalculationContext);

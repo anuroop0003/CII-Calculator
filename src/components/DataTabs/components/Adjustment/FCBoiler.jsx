@@ -1,6 +1,6 @@
 import { useContext } from "react";
-import { CalculationContext } from "../../../state management/ContextProvider";
-import Checkbox from "../../Input/Checkbox/Checkbox";
+import { CalculationContext } from "../../../../state management/ContextProvider";
+import Checkbox from "../../../Input/Checkbox/Checkbox";
 
 export default function FCBoiler({ tabSelected }) {
   const { parameters, setParameters } = useContext(CalculationContext);

@@ -67,7 +67,7 @@ const DetailsPage = () => {
         handleBlur,
         handleSubmit,
       }) => (
-        <>
+        <main>
           <div className="personal-info-container">
             <p className="personal-info-container-title">
               Personal Information
@@ -173,22 +173,18 @@ const DetailsPage = () => {
             <div className="parameters-selection-container-body flex-grid-container">
               <p className="custom-input-label">Years to calculate</p>
               <div className="parameters-selection-checkbox-container">
-                {[2022, 2023, 2024, 2025, 2026, 2027, 2028, 2029, 2030].map(
-                  (item) => (
-                    <Checkbox
-                      checked={
-                        values.numberofyears.includes(String(item))
-                          ? true
-                          : false
-                      }
-                      name={"numberofyears"}
-                      key={item}
-                      value={item}
-                      label={item}
-                      handleChange={handleChange}
-                    />
-                  )
-                )}
+                {[2022, 2023, 2024, 2025, 2026].map((item) => (
+                  <Checkbox
+                    checked={
+                      values.numberofyears.includes(String(item)) ? true : false
+                    }
+                    name={"numberofyears"}
+                    key={item}
+                    value={item}
+                    label={item}
+                    handleChange={handleChange}
+                  />
+                ))}
               </div>
               {errors.numberofyears && touched.numberofyears && (
                 <span className="cutom-input-error-msg">
@@ -223,7 +219,7 @@ const DetailsPage = () => {
               <DataTabs state={parameters?.details?.data} />
             </div>
           )}
-        </>
+        </main>
       )}
     </Formik>
   );

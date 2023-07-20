@@ -1,7 +1,7 @@
 import { useContext } from "react";
-import { CalculationContext } from "../../../state management/ContextProvider";
-import Checkbox from "../../Input/Checkbox/Checkbox";
-import CustomInput from "../../Input/Input";
+import { CalculationContext } from "../../../../state management/ContextProvider";
+import Checkbox from "../../../Input/Checkbox/Checkbox";
+import CustomInput from "../../../Input/Input";
 
 const FCElectrical = ({ tabSelected }) => {
   const { parameters, setParameters } = useContext(CalculationContext);

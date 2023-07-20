@@ -1,7 +1,7 @@
 import { useContext } from "react";
-import { CalculationContext } from "../../../state management/ContextProvider";
-import Checkbox from "../../Input/Checkbox/Checkbox";
-import CustomInput from "../../Input/Input";
+import { CalculationContext } from "../../../../state management/ContextProvider";
+import Checkbox from "../../../Input/Checkbox/Checkbox";
+import CustomInput from "../../../Input/Input";
 
 export default function FCVoyage({ tabSelected }) {
   const { parameters, setParameters } = useContext(CalculationContext);
@@ -51,14 +51,26 @@ export default function FCVoyage({ tabSelected }) {
           name="safe"
           value={true}
           checked={parameters?.[tabSelected]?.["FCV"]?.["safe"]}
-          handleChange={(e) => handleCheckboxChange(e, "FCV")}
+          handleChange={(e) => {
+            handleCheckboxChange(e, "FCV");
+            handleCheckboxChange(
+              { target: { value: false, name: "ice" } },
+              "FCV"
+            );
+          }}
           label="Endanger safe navigation of a ship"
         />
         <Checkbox
           name="ice"
           checked={parameters?.[tabSelected]?.["FCV"]?.["ice"]}
           value={true}
-          handleChange={(e) => handleCheckboxChange(e, "FCV")}
+          handleChange={(e) => {
+            handleCheckboxChange(e, "FCV");
+            handleCheckboxChange(
+              { target: { value: false, name: "safe" } },
+              "FCV"
+            );
+          }}
           label="Sailing in ice conditions"
         />
         <div className="input-parameter-container">
