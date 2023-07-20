@@ -1,5 +1,5 @@
 import { Formik } from "formik";
-import { useState } from "react";
+import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import * as Yup from "yup";
 import CustomButton from "../../components/Button/Button";
@@ -7,6 +7,7 @@ import DataTabs from "../../components/DataTabs/DataTabs";
 import Checkbox from "../../components/Input/Checkbox/Checkbox";
 import CustomInput from "../../components/Input/Input";
 import CustomSelect from "../../components/Select/CustomSelect";
+import { CalculationContext } from "../../state management/ContextProvider";
 import "./detailspage.css";
 
 const schema = Yup.object().shape({
@@ -31,10 +32,7 @@ const schema = Yup.object().shape({
 
 const DetailsPage = () => {
   const navigate = useNavigate();
-  const [showTable, setShowTable] = useState({
-    visible: false,
-    data: { CF: 3.206 },
-  });
+  const { parameters, setParameters } = useContext(CalculationContext);
   return (
     <Formik
       validationSchema={schema}
@@ -49,15 +47,15 @@ const DetailsPage = () => {
         deadweight: "500",
         imonumber: "123456789",
         yearofbuild: "2000",
-        numberoffuels: "",
-        numberofyears: [],
+        numberoffuels: "5",
+        numberofyears: [2022],
       }}
       onSubmit={(values) => {
         // Alert the input values of the form that we filled
         // navigate("/calculate", { state: values });
-        setShowTable((prev) => ({
-          data: { ...prev.data, ...values },
-          visible: true,
+        setParameters((prev) => ({
+          ...prev,
+          details: { data: values, visible: true },
         }));
       }}
     >
@@ -220,27 +218,9 @@ const DetailsPage = () => {
           <div className="calculate-button-container">
             <CustomButton onClick={handleSubmit} label={"Enter Data"} />
           </div>
-          {/* {showTable.visible && (
+          {parameters?.details?.visible && (
             <div style={{ margin: "20px" }}>
-              <CustomTable state={showTable.data} />
-            </div>
-          )} */}
-          {/* {showTable.visible && (
-            <div
-              style={{
-                margin: "20px",
-                width: "calc(100% - 40px)",
-                display: "flex",
-                justifyContent: "center",
-                scrollBehavior: "smooth",
-              }}
-            >
-              <DataTable state={showTable.data} />
-            </div>
-          )} */}
-          {showTable.visible && (
-            <div style={{ margin: "20px" }}>
-              <DataTabs state={showTable.data} />
+              <DataTabs state={parameters?.details?.data} />
             </div>
           )}
         </>

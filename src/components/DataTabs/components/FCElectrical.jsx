@@ -1,18 +1,13 @@
-import { useEffect, useState } from "react";
+import { useContext } from "react";
+import { CalculationContext } from "../../../state management/ContextProvider";
 import Checkbox from "../../Input/Checkbox/Checkbox";
 import CustomInput from "../../Input/Input";
 
 const FCElectrical = ({ tabSelected }) => {
-  const [fcElectrical, setFCElectrical] = useState({});
-  useEffect(() => {
-    window.scrollTo({
-      top: 1650,
-      left: 100,
-      behavior: "smooth",
-    });
-  }, []);
+  const { parameters, setParameters } = useContext(CalculationContext);
+
   const handleChange = (e, key) => {
-    setFCElectrical((prev) => ({
+    setParameters((prev) => ({
       ...prev,
       [tabSelected]: {
         ...prev[tabSelected],
@@ -25,7 +20,7 @@ const FCElectrical = ({ tabSelected }) => {
   };
   const handleCheckboxChange = (e, key) => {
     if (e.target.checked) {
-      setFCElectrical((prev) => ({
+      setParameters((prev) => ({
         ...prev,
         [tabSelected]: {
           ...prev[tabSelected],
@@ -36,7 +31,7 @@ const FCElectrical = ({ tabSelected }) => {
         },
       }));
     } else {
-      setFCElectrical((prev) => ({
+      setParameters((prev) => ({
         ...prev,
         [tabSelected]: {
           ...prev[tabSelected],
@@ -54,16 +49,16 @@ const FCElectrical = ({ tabSelected }) => {
       <div>
         <Checkbox
           name="param1"
-          checked={fcElectrical?.[tabSelected]?.["FCE"]?.["param1"]}
+          checked={parameters?.[tabSelected]?.["FCE"]?.["param1"]}
           value={true}
           handleChange={(e) => handleCheckboxChange(e, "FCE")}
           label="Refrigerated containers"
         />
-        {fcElectrical?.[tabSelected]?.["FCE"]?.["param1"] && (
+        {parameters?.[tabSelected]?.["FCE"]?.["param1"] && (
           <div style={{ marginLeft: "40px" }}>
             <Checkbox
               name="param11"
-              checked={fcElectrical?.[tabSelected]?.["FCE"]?.["param11"]}
+              checked={parameters?.[tabSelected]?.["FCE"]?.["param11"]}
               value={true}
               handleChange={(e) => {
                 handleCheckboxChange(e, "FCE");
@@ -74,8 +69,8 @@ const FCElectrical = ({ tabSelected }) => {
               }}
               label="For ships that have ability to monitor reefer electrical consumption, the ship may calculate the reefer container kWh consumption as follows:"
             />
-            {fcElectrical?.[tabSelected]?.["FCE"]?.["param11"] &&
-              fcElectrical?.[tabSelected]?.["FCE"]?.["param1"] && (
+            {parameters?.[tabSelected]?.["FCE"]?.["param11"] &&
+              parameters?.[tabSelected]?.["FCE"]?.["param1"] && (
                 <div style={{ marginLeft: "80px" }}>
                   <div className="input-parameter-container">
                     <span>Reefer kWh = </span>
@@ -83,9 +78,7 @@ const FCElectrical = ({ tabSelected }) => {
                       type="number"
                       name="reefer_kwh"
                       onChange={(e) => handleChange(e, "FCE")}
-                      value={
-                        fcElectrical?.[tabSelected]?.["FCE"]?.["reefer_kwh"]
-                      }
+                      value={parameters?.[tabSelected]?.["FCE"]?.["reefer_kwh"]}
                       placeholder="Enter Value"
                     />
                   </div>
@@ -95,7 +88,7 @@ const FCElectrical = ({ tabSelected }) => {
                       type="number"
                       name="sfoc1"
                       onChange={(e) => handleChange(e, "FCE")}
-                      value={fcElectrical?.[tabSelected]?.["FCE"]?.["sfoc1"]}
+                      value={parameters?.[tabSelected]?.["FCE"]?.["sfoc1"]}
                       placeholder="Enter Value"
                     />
                   </div>
@@ -103,11 +96,11 @@ const FCElectrical = ({ tabSelected }) => {
               )}
           </div>
         )}
-        {fcElectrical?.[tabSelected]?.["FCE"]?.["param1"] && (
+        {parameters?.[tabSelected]?.["FCE"]?.["param1"] && (
           <div style={{ marginLeft: "40px" }}>
             <Checkbox
               name="param12"
-              checked={fcElectrical?.[tabSelected]?.["FCE"]?.["param12"]}
+              checked={parameters?.[tabSelected]?.["FCE"]?.["param12"]}
               value={true}
               handleChange={(e) => {
                 handleCheckboxChange(e, "FCE");
@@ -118,15 +111,15 @@ const FCElectrical = ({ tabSelected }) => {
               }}
               label="For ships that do not have ability to monitor reefer electrical consumption, the ship may calculate the reefer container kWh consumption as follows:"
             />
-            {fcElectrical?.[tabSelected]?.["FCE"]?.["param12"] &&
-              fcElectrical?.[tabSelected]?.["FCE"]?.["param1"] && (
+            {parameters?.[tabSelected]?.["FCE"]?.["param12"] &&
+              parameters?.[tabSelected]?.["FCE"]?.["param1"] && (
                 <div style={{ marginLeft: "80px" }}>
                   <div className="input-parameter-container">
                     <span>SFOC avg = </span>
                     <CustomInput
                       name="sfoc_avg"
                       onChange={(e) => handleChange(e, "FCE")}
-                      value={fcElectrical?.[tabSelected]?.["FCE"]?.["sfoc_avg"]}
+                      value={parameters?.[tabSelected]?.["FCE"]?.["sfoc_avg"]}
                       placeholder="Enter Value"
                     />
                   </div>
@@ -137,9 +130,7 @@ const FCElectrical = ({ tabSelected }) => {
                       name="reefer_days_sea"
                       onChange={(e) => handleChange(e, "FCE")}
                       value={
-                        fcElectrical?.[tabSelected]?.["FCE"]?.[
-                          "reefer_days_sea"
-                        ]
+                        parameters?.[tabSelected]?.["FCE"]?.["reefer_days_sea"]
                       }
                       placeholder="Enter Value"
                     />
@@ -151,7 +142,7 @@ const FCElectrical = ({ tabSelected }) => {
                       name="noc_arrival"
                       onChange={(e) => handleChange(e, "FCE")}
                       value={
-                        fcElectrical?.[tabSelected]?.["FCE"]?.["noc_arrival"]
+                        parameters?.[tabSelected]?.["FCE"]?.["noc_arrival"]
                       }
                       placeholder="Enter Value"
                     />
@@ -162,9 +153,7 @@ const FCElectrical = ({ tabSelected }) => {
                       type="number"
                       name="noc_depart"
                       onChange={(e) => handleChange(e, "FCE")}
-                      value={
-                        fcElectrical?.[tabSelected]?.["FCE"]?.["noc_depart"]
-                      }
+                      value={parameters?.[tabSelected]?.["FCE"]?.["noc_depart"]}
                       placeholder="Enter Value"
                     />
                   </div>
@@ -174,9 +163,7 @@ const FCElectrical = ({ tabSelected }) => {
                       type="number"
                       name="days_port"
                       onChange={(e) => handleChange(e, "FCE")}
-                      value={
-                        fcElectrical?.[tabSelected]?.["FCE"]?.["days_port"]
-                      }
+                      value={parameters?.[tabSelected]?.["FCE"]?.["days_port"]}
                       placeholder="Enter Value"
                     />
                   </div>
@@ -186,12 +173,12 @@ const FCElectrical = ({ tabSelected }) => {
         )}
         <Checkbox
           name="param2"
-          checked={fcElectrical?.[tabSelected]?.["FCE"]?.["param2"]}
+          checked={parameters?.[tabSelected]?.["FCE"]?.["param2"]}
           value={true}
           handleChange={(e) => handleCheckboxChange(e, "FCE")}
           label="Cargo cooling systems on gas carriers and LNG carriers"
         />
-        {fcElectrical?.[tabSelected]?.["FCE"]?.["param2"] && (
+        {parameters?.[tabSelected]?.["FCE"]?.["param2"] && (
           <div style={{ marginLeft: "40px" }}>
             <div className="input-parameter-container">
               <span>Cooling kWh = </span>
@@ -199,7 +186,7 @@ const FCElectrical = ({ tabSelected }) => {
                 type="number"
                 name="cooling_kwh"
                 onChange={(e) => handleChange(e, "FCE")}
-                value={fcElectrical?.[tabSelected]?.["FCE"]?.["cooling_kwh"]}
+                value={parameters?.[tabSelected]?.["FCE"]?.["cooling_kwh"]}
                 placeholder="Enter Value"
               />
             </div>
@@ -210,7 +197,7 @@ const FCElectrical = ({ tabSelected }) => {
                 inputmode="numeric"
                 name="sfoc2"
                 onChange={(e) => handleChange(e, "FCE")}
-                value={fcElectrical?.[tabSelected]?.["FCE"]?.["sfoc2"]}
+                value={parameters?.[tabSelected]?.["FCE"]?.["sfoc2"]}
                 placeholder="Enter Value"
               />
             </div>
@@ -218,12 +205,12 @@ const FCElectrical = ({ tabSelected }) => {
         )}
         <Checkbox
           name="param3"
-          checked={fcElectrical?.[tabSelected]?.["FCE"]?.["param3"]}
+          checked={parameters?.[tabSelected]?.["FCE"]?.["param3"]}
           value={true}
           handleChange={(e) => handleCheckboxChange(e, "FCE")}
           label="Electrical cargo discharge pumps on tankers"
         />
-        {fcElectrical?.[tabSelected]?.["FCE"]?.["param3"] && (
+        {parameters?.[tabSelected]?.["FCE"]?.["param3"] && (
           <div style={{ marginLeft: "40px" }}>
             <div className="input-parameter-container">
               <span>Discharge kWh = </span>
@@ -232,7 +219,7 @@ const FCElectrical = ({ tabSelected }) => {
                 inputmode="numeric"
                 name="discharge_kwh"
                 onChange={(e) => handleChange(e, "FCE")}
-                value={fcElectrical?.[tabSelected]?.["FCE"]?.["discharge_kwh"]}
+                value={parameters?.[tabSelected]?.["FCE"]?.["discharge_kwh"]}
                 placeholder="Enter Value"
               />
             </div>
@@ -243,7 +230,7 @@ const FCElectrical = ({ tabSelected }) => {
                 inputmode="numeric"
                 name="sfoc3"
                 onChange={(e) => handleChange(e, "FCE")}
-                value={fcElectrical?.[tabSelected]?.["FCE"]?.["sfoc3"]}
+                value={parameters?.[tabSelected]?.["FCE"]?.["sfoc3"]}
                 placeholder="Enter Value"
               />
             </div>

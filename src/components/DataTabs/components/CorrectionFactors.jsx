@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useContext } from "react";
+import { CalculationContext } from "../../../state management/ContextProvider";
 import Checkbox from "../../Input/Checkbox/Checkbox";
 import FCBoiler from "./FCBoiler";
 import FCElectrical from "./FCElectrical";
@@ -6,10 +7,11 @@ import FCVoyage from "./FCVoyage";
 import TFJ from "./TFJ";
 
 const CorrectionFactors = ({ tabSelected }) => {
-  const [correctionFactors, setCorrectionFactors] = useState({});
+  const { parameters, setParameters } = useContext(CalculationContext);
+
   const handleCheckboxChange = (e, key) => {
     if (e.target.checked) {
-      setCorrectionFactors((prev) => ({
+      setParameters((prev) => ({
         ...prev,
         [tabSelected]: {
           ...prev[tabSelected],
@@ -20,7 +22,7 @@ const CorrectionFactors = ({ tabSelected }) => {
         },
       }));
     } else {
-      setCorrectionFactors((prev) => ({
+      setParameters((prev) => ({
         ...prev,
         [tabSelected]: {
           ...prev[tabSelected],
@@ -40,9 +42,7 @@ const CorrectionFactors = ({ tabSelected }) => {
           <Checkbox
             name="FCV"
             value={true}
-            checked={
-              correctionFactors?.[tabSelected]?.["Params_Types"]?.["FCV"]
-            }
+            checked={parameters?.[tabSelected]?.["Params_Types"]?.["FCV"]}
             handleChange={(e) => handleCheckboxChange(e, "Params_Types")}
             label="FC voyage j"
           />
@@ -51,9 +51,7 @@ const CorrectionFactors = ({ tabSelected }) => {
           <Checkbox
             name="TFJ"
             value={true}
-            checked={
-              correctionFactors?.[tabSelected]?.["Params_Types"]?.["TFJ"]
-            }
+            checked={parameters?.[tabSelected]?.["Params_Types"]?.["TFJ"]}
             handleChange={(e) => handleCheckboxChange(e, "Params_Types")}
             label="TFj"
           />
@@ -62,9 +60,7 @@ const CorrectionFactors = ({ tabSelected }) => {
           <Checkbox
             name="FCE"
             value={true}
-            checked={
-              correctionFactors?.[tabSelected]?.["Params_Types"]?.["FCE"]
-            }
+            checked={parameters?.[tabSelected]?.["Params_Types"]?.["FCE"]}
             handleChange={(e) => handleCheckboxChange(e, "Params_Types")}
             label="FC electrical j"
           />
@@ -73,9 +69,7 @@ const CorrectionFactors = ({ tabSelected }) => {
           <Checkbox
             name="FCB"
             value={true}
-            checked={
-              correctionFactors?.[tabSelected]?.["Params_Types"]?.["FCB"]
-            }
+            checked={parameters?.[tabSelected]?.["Params_Types"]?.["FCB"]}
             handleChange={(e) => handleCheckboxChange(e, "Params_Types")}
             label="FC Boiler j"
           />
@@ -84,24 +78,22 @@ const CorrectionFactors = ({ tabSelected }) => {
           <Checkbox
             name="FCO"
             value={true}
-            checked={
-              correctionFactors?.[tabSelected]?.["Params_Types"]?.["FCO"]
-            }
+            checked={parameters?.[tabSelected]?.["Params_Types"]?.["FCO"]}
             handleChange={(e) => handleCheckboxChange(e, "Params_Types")}
             label="FC others j"
           />
         </span>
       </div>
-      {correctionFactors?.[tabSelected]?.["Params_Types"]?.["FCV"] && (
+      {parameters?.[tabSelected]?.["Params_Types"]?.["FCV"] && (
         <FCVoyage tabSelected={tabSelected} />
       )}
-      {correctionFactors?.[tabSelected]?.["Params_Types"]?.["TFJ"] && (
+      {parameters?.[tabSelected]?.["Params_Types"]?.["TFJ"] && (
         <TFJ tabSelected={tabSelected} />
       )}
-      {correctionFactors?.[tabSelected]?.["Params_Types"]?.["FCE"] && (
+      {parameters?.[tabSelected]?.["Params_Types"]?.["FCE"] && (
         <FCElectrical tabSelected={tabSelected} />
       )}
-      {correctionFactors?.[tabSelected]?.["Params_Types"]?.["FCB"] && (
+      {parameters?.[tabSelected]?.["Params_Types"]?.["FCB"] && (
         <FCBoiler tabSelected={tabSelected} />
       )}
     </div>

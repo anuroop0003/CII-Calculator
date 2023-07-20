@@ -1,18 +1,26 @@
-import React, { useEffect, useState } from "react";
+import { useContext } from "react";
+import { CalculationContext } from "../../../state management/ContextProvider";
 import CustomInput from "../../Input/Input";
 import CustomSelect from "../../Select/CustomSelect";
 
 export default function TFJ({ tabSelected }) {
-  const [tfjValues, setTFJValues] = useState({});
-  useEffect(() => {
-    window.scrollTo({
-      top: 1650,
-      left: 100,
-      behavior: "smooth",
-    });
-  }, []);
+  const { parameters, setParameters } = useContext(CalculationContext);
+
   const handleChange = (e, key) => {
-    setTFJValues((prev) => ({
+    setParameters((prev) => ({
+      ...prev,
+      [tabSelected]: {
+        ...prev[tabSelected],
+        [key]: {
+          ...prev?.[tabSelected]?.[key],
+          [e.target.name]: Number(e.target.value),
+        },
+      },
+    }));
+  };
+
+  const handleSelectChange = (e, key) => {
+    setParameters((prev) => ({
       ...prev,
       [tabSelected]: {
         ...prev[tabSelected],
@@ -23,39 +31,15 @@ export default function TFJ({ tabSelected }) {
       },
     }));
   };
-  const handleCheckboxChange = (e, key) => {
-    if (e.target.checked) {
-      setTFJValues((prev) => ({
-        ...prev,
-        [tabSelected]: {
-          ...prev[tabSelected],
-          [key]: {
-            ...prev?.[tabSelected]?.[key],
-            [e.target.name]: e.target.value,
-          },
-        },
-      }));
-    } else {
-      setTFJValues((prev) => ({
-        ...prev,
-        [tabSelected]: {
-          ...prev[tabSelected],
-          [key]: {
-            ...prev?.[tabSelected]?.[key],
-            [e.target.name]: false,
-          },
-        },
-      }));
-    }
-  };
+
   return (
     <div className="parameters-outer-warapper">
       <p>TF j</p>
       <div>
         <CustomSelect
           name="param1"
-          onChange={(e) => handleChange(e, "TFJ")}
-          value={tfjValues?.[tabSelected]?.["TFJ"]?.["param1"]}
+          onChange={(e) => handleSelectChange(e, "TFJ")}
+          value={parameters?.[tabSelected]?.["TFJ"]?.["param1"]}
           option={[
             { label: "Not applicable", value: 1 },
             { label: "STS", value: 2 },
@@ -66,8 +50,9 @@ export default function TFJ({ tabSelected }) {
           <span>TFj = </span>
           <CustomInput
             name="tfj"
+            type="number"
             onChange={(e) => handleChange(e, "TFJ")}
-            value={tfjValues?.[tabSelected]?.["TFJ"]?.["tfj"]}
+            value={parameters?.[tabSelected]?.["TFJ"]?.["tfj"]}
             placeholder="Enter Value"
           />
         </div>

@@ -12,7 +12,7 @@ const DataTabs = ({ state }) => {
       behavior: "smooth",
     });
   }, []);
-  // console.log(state);
+
   const [tabSelected, setTabSelected] = useState(state.numberofyears[0]);
   return (
     <div className="datatabs-container">

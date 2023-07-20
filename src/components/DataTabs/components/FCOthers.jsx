@@ -1,12 +1,7 @@
-import React, { useEffect } from "react";
+import { useContext } from "react";
+import { CalculationContext } from "../../../state management/ContextProvider";
 
 export default function FCOthers() {
-  useEffect(() => {
-    window.scrollTo({
-      top: 1650,
-      left: 100,
-      behavior: "smooth",
-    });
-  }, []);
+  const { parameters, setParameters } = useContext(CalculationContext);
   return <div></div>;
 }

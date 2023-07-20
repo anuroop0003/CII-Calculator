@@ -1,18 +1,13 @@
-import React, { useEffect, useState } from "react";
+import { useContext } from "react";
+import { CalculationContext } from "../../../state management/ContextProvider";
 import Checkbox from "../../Input/Checkbox/Checkbox";
 import CustomInput from "../../Input/Input";
 
 export default function FCVoyage({ tabSelected }) {
-  const [fcVoyageValues, SetFCVoyageValues] = useState({});
-  useEffect(() => {
-    window.scrollTo({
-      top: 1650,
-      left: 100,
-      behavior: "smooth",
-    });
-  }, []);
+  const { parameters, setParameters } = useContext(CalculationContext);
+
   const handleChange = (e, key) => {
-    SetFCVoyageValues((prev) => ({
+    setParameters((prev) => ({
       ...prev,
       [tabSelected]: {
         ...prev[tabSelected],
@@ -25,7 +20,7 @@ export default function FCVoyage({ tabSelected }) {
   };
   const handleCheckboxChange = (e, key) => {
     if (e.target.checked) {
-      SetFCVoyageValues((prev) => ({
+      setParameters((prev) => ({
         ...prev,
         [tabSelected]: {
           ...prev[tabSelected],
@@ -36,7 +31,7 @@ export default function FCVoyage({ tabSelected }) {
         },
       }));
     } else {
-      SetFCVoyageValues((prev) => ({
+      setParameters((prev) => ({
         ...prev,
         [tabSelected]: {
           ...prev[tabSelected],
@@ -49,21 +44,21 @@ export default function FCVoyage({ tabSelected }) {
     }
   };
   return (
-    <div className="parameters-outer-warapper">
+    <div className="parameters-outer-warapper" id="fc-voyage">
       <p>FC voyage j</p>
       <div>
         <Checkbox
           name="safe"
           value={true}
-          checked={fcVoyageValues?.[tabSelected]?.["FC_Voyage"]?.["safe"]}
-          handleChange={(e) => handleCheckboxChange(e, "FC_Voyage")}
+          checked={parameters?.[tabSelected]?.["FCV"]?.["safe"]}
+          handleChange={(e) => handleCheckboxChange(e, "FCV")}
           label="Endanger safe navigation of a ship"
         />
         <Checkbox
           name="ice"
-          checked={fcVoyageValues?.[tabSelected]?.["FC_Voyage"]?.["ice"]}
+          checked={parameters?.[tabSelected]?.["FCV"]?.["ice"]}
           value={true}
-          handleChange={(e) => handleCheckboxChange(e, "FC_Voyage")}
+          handleChange={(e) => handleCheckboxChange(e, "FCV")}
           label="Sailing in ice conditions"
         />
         <div className="input-parameter-container">
@@ -71,8 +66,8 @@ export default function FCVoyage({ tabSelected }) {
           <CustomInput
             type="number"
             name="fc_voyage"
-            onChange={(e) => handleChange(e, "FC_Voyage")}
-            value={fcVoyageValues?.[tabSelected]?.["FC_Voyage"]?.["fc_voyage"]}
+            onChange={(e) => handleChange(e, "FCV")}
+            value={parameters?.[tabSelected]?.["FCV"]?.["fc_voyage"]}
             placeholder="Enter Value"
           />
         </div>
@@ -81,8 +76,8 @@ export default function FCVoyage({ tabSelected }) {
           <CustomInput
             type="number"
             name="dx"
-            onChange={(e) => handleChange(e, "FC_Voyage")}
-            value={fcVoyageValues?.[tabSelected]?.["FC_Voyage"]?.["dx"]}
+            onChange={(e) => handleChange(e, "FCV")}
+            value={parameters?.[tabSelected]?.["FCV"]?.["dx"]}
             placeholder="Enter Value"
           />
         </div>
