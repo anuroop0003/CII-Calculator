@@ -4,11 +4,11 @@ import Chart from "react-apexcharts";
 
 const ResultPage = () => {
   const series = [
-    // {
-    //   name: "Points 1",
-    //   // type: "scatter",
-    //   data: [[2025, 5]],
-    // },
+    {
+      name: "Points 1",
+      type: "scatter",
+      data: [4, 5, 2, 3, 1],
+    },
     {
       name: "Line 1",
       type: "area",
@@ -79,7 +79,13 @@ const ResultPage = () => {
     },
     // Dots in every line
     markers: {
-      size: [1, 1],
+      size: [5, 0, 0, 0, 0, 0],
+      colors: "#000000",
+      strokeColor: "#000000",
+      shape: "circle",
+      hover: {
+        size: 6,
+      },
     },
     tooltip: {
       shared: false,

@@ -34,9 +34,9 @@ export default function VoluntaryCII({ tabSelected }) {
       }));
     }
   };
-  console.log("parameters", parameters);
+
   return (
-    <div className="parameters-container2">
+    <div className="parameters-container2" id="container11">
       <span>Voluntary reporting of alternative CIIs</span>
       <div className="parameters-selector-container">
         <span>

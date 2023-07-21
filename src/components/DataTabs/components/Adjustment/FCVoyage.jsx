@@ -1,10 +1,23 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { CalculationContext } from "../../../../state management/ContextProvider";
 import Checkbox from "../../../Input/Checkbox/Checkbox";
 import CustomInput from "../../../Input/Input";
 
 export default function FCVoyage({ tabSelected }) {
   const { parameters, setParameters } = useContext(CalculationContext);
+
+  useEffect(() => {
+    var offsetHeightMain = document?.getElementById("main")?.offsetHeight;
+    var offsetHeight1 = document?.getElementById("container9")?.offsetHeight;
+    var offsetHeight2 = document?.getElementById("container10")?.offsetHeight;
+    var offsetHeight3 = document?.getElementById("container11")?.offsetHeight;
+    window.scrollTo({
+      top:
+        offsetHeightMain - (offsetHeight1 + offsetHeight2 + offsetHeight3 + 40),
+      left: 100,
+      behavior: "smooth",
+    });
+  }, []);
 
   const handleChange = (e, key) => {
     setParameters((prev) => ({
@@ -73,26 +86,31 @@ export default function FCVoyage({ tabSelected }) {
           }}
           label="Sailing in ice conditions"
         />
-        <div className="input-parameter-container">
-          <span>FC voyage j = </span>
-          <CustomInput
-            type="number"
-            name="fc_voyage"
-            onChange={(e) => handleChange(e, "FCV")}
-            value={parameters?.[tabSelected]?.["FCV"]?.["fc_voyage"]}
-            placeholder="Enter Value"
-          />
-        </div>
-        <div className="input-parameter-container">
-          <span>Dx = </span>
-          <CustomInput
-            type="number"
-            name="dx"
-            onChange={(e) => handleChange(e, "FCV")}
-            value={parameters?.[tabSelected]?.["FCV"]?.["dx"]}
-            placeholder="Enter Value"
-          />
-        </div>
+        {(parameters?.[tabSelected]?.["FCV"]?.["ice"] ||
+          parameters?.[tabSelected]?.["FCV"]?.["safe"]) && (
+          <>
+            <div className="input-parameter-container">
+              <span>FC voyage j = </span>
+              <CustomInput
+                type="number"
+                name="fc_voyage"
+                onChange={(e) => handleChange(e, "FCV")}
+                value={parameters?.[tabSelected]?.["FCV"]?.["fc_voyage"]}
+                placeholder="Enter Value"
+              />
+            </div>
+            <div className="input-parameter-container">
+              <span>Dx = </span>
+              <CustomInput
+                type="number"
+                name="dx"
+                onChange={(e) => handleChange(e, "FCV")}
+                value={parameters?.[tabSelected]?.["FCV"]?.["dx"]}
+                placeholder="Enter Value"
+              />
+            </div>
+          </>
+        )}
       </div>
     </div>
   );

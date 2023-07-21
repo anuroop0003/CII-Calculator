@@ -14,7 +14,7 @@ const HomePage = () => {
       <div className="homepage-header">
         <span onClick={() => handleNavigation("details")}>CII Calculator</span>
         <span onClick={() => handleNavigation("result")}>Rules</span>
-        <span onClick={() => handleNavigation("image-modal")}>Help</span>
+        <span onClick={() => alert("No page available")}>Help</span>
       </div>
       <div className="homepage-body">
         <span className="sub-title">CII – Carbon Intensity Indicator</span>

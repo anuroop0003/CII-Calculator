@@ -35,9 +35,9 @@ const Adjustment = ({ tabSelected }) => {
       }));
     }
   };
-  console.log("parameters", parameters);
+
   return (
-    <div className="parameters-container2">
+    <div className="parameters-container2" id="container9">
       <span>Adjustments</span>
       <div className="parameters-selector-container">
         <span>

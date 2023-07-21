@@ -8,8 +8,11 @@ import "./datatabs.css";
 
 const DataTabs = ({ state }) => {
   useEffect(() => {
+    var offsetHeightMain = document?.getElementById("main")?.offsetHeight;
+    var offsetHeight1 =
+      document?.getElementById("main-container1")?.offsetHeight;
     window.scrollTo({
-      top: 1100,
+      top: offsetHeightMain - offsetHeight1,
       left: 100,
       behavior: "smooth",
     });
@@ -18,7 +21,7 @@ const DataTabs = ({ state }) => {
   const [tabSelected, setTabSelected] = useState(state.numberofyears[0]);
   return (
     <div className="datatabs-container">
-      <div className="tabs-container">
+      <div className="tabs-container" id="container7">
         {state?.numberofyears?.map((item, i) => (
           <span
             key={uuidv4()}

@@ -14,11 +14,12 @@ const CustomInput = ({
     <div autoFocus className="custom-input-container flex-grid-body">
       {label && <p className="custom-input-label">{label}</p>}
       <input
-        pattern="[0-9]{1,5}"
+        pattern="[0-9]*"
         type={type ?? "text"}
         placeholder={placeholder}
         value={value ?? ""}
         name={name}
+        min={type && 1}
         onChange={onChange}
       />
       {error && (
@@ -31,3 +32,5 @@ const CustomInput = ({
 };
 
 export default CustomInput;
+
+// isSafeInteger

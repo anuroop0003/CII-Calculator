@@ -84,7 +84,7 @@
   margin-top: 20px;
   background-color: #091242;
   border-radius: 10px;
-  padding: 20px;
+  padding: 15px 10px;
 }
 
 .parameters-container2 > span {
@@ -165,7 +165,7 @@
   margin-top: 20px;
   background-color: #091242;
   border-radius: 10px;
-  padding: 20px;
+  padding: 15px 10px;
 }
 
 .correction-factors-container > span {
@@ -310,4 +310,18 @@
   height: 100vh;
   background-color: rgba(51, 50, 50, 0.9);
   margin: 0;
+}
+
+/* EEOI */
+#voluntary-eeoi-container span {
+  width: 200px;
+  text-align: right;
+}
+
+#voluntary-eeoi-container .custom-select-container select {
+  width: 500px;
+}
+
+#voluntary-eeoi-container .custom-input-container {
+  width: 500px;
 }

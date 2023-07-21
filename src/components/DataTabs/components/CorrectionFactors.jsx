@@ -5,9 +5,8 @@ import CustomInput from "../../Input/Input";
 export default function CorrectionFactors({ tabSelected }) {
   const { parameters, setParameters } = useContext(CalculationContext);
 
-  console.log("parameters", parameters);
   return (
-    <div className="correction-factors-container">
+    <div className="correction-factors-container" id="container10">
       <span>Correction Factors</span>
       <div className="correction-factors-child">
         <div className="title-div">fi</div>

@@ -13,7 +13,7 @@ const CustomSelect = ({
 }) => {
   return (
     <div className="custom-select-container flex-grid-body">
-      {label && <p>{label}</p>}
+      {label && <p className="custom-select-label">{label}</p>}
       <select
         placeholder={placeholder}
         name={name}

@@ -85,3 +85,14 @@
   margin: 20px 0;
   flex-wrap: wrap;
 }
+
+.engine-parameters-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px 40px;
+  margin-top: 20px;
+}
+
+.engine-parameters-container div {
+  width: calc(50% - 20px);
+}

@@ -1,9 +1,22 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { CalculationContext } from "../../../../state management/ContextProvider";
 import Checkbox from "../../../Input/Checkbox/Checkbox";
 
 export default function FCBoiler({ tabSelected }) {
   const { parameters, setParameters } = useContext(CalculationContext);
+
+  useEffect(() => {
+    var offsetHeightMain = document?.getElementById("main")?.offsetHeight;
+    var offsetHeight1 = document?.getElementById("container9")?.offsetHeight;
+    var offsetHeight2 = document?.getElementById("container10")?.offsetHeight;
+    var offsetHeight3 = document?.getElementById("container11")?.offsetHeight;
+    window.scrollTo({
+      top:
+        offsetHeightMain - (offsetHeight1 + offsetHeight2 + offsetHeight3 + 40),
+      left: 100,
+      behavior: "smooth",
+    });
+  }, []);
 
   const handleCheckboxChange = (e, key) => {
     if (e.target.checked) {
