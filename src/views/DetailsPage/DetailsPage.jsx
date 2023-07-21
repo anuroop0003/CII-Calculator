@@ -206,7 +206,7 @@ const DetailsPage = () => {
         imonumber: "123456789",
         yearofbuild: "2000",
         numberoffuels: "5",
-        iceclass: "1",
+        iceclass: "",
         flag: "India",
         numberofyears: [2022],
         numberofengine_main: "1",
