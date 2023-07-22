@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { CalculationContext } from "../../../../state management/ContextProvider";
 import Checkbox from "../../../Input/Checkbox/Checkbox";
+import CustomInput from "../../../Input/Input";
 import ImageModal from "./ImageModal";
 
 export default function TFJ({ tabSelected }) {
@@ -45,49 +46,74 @@ export default function TFJ({ tabSelected }) {
       }));
     }
   };
+  const handleChange = (e, key) => {
+    setParameters((prev) => ({
+      ...prev,
+      [tabSelected]: {
+        ...prev[tabSelected],
+        [key]: {
+          ...prev?.[tabSelected]?.[key],
+          [e.target.name]: Number(e.target.value),
+        },
+      },
+    }));
+  };
 
   return (
     <div className="parameters-outer-warapper">
       <p>TF j</p>
       <div>
         <Checkbox
-          name="sts_corr"
+          name="param1"
           value={true}
-          checked={parameters?.[tabSelected]?.["TFJ"]?.["sts_corr"]}
+          checked={parameters?.[tabSelected]?.["TFJ"]?.["param1"]}
           handleChange={(e) => {
             handleCheckboxChange(e, "TFJ");
             handleCheckboxChange(
-              { target: { value: false, name: "st_corr" } },
+              { target: { value: false, name: "param2" } },
               "TFJ"
             );
           }}
           label="STS corrections"
         />
-        {parameters?.[tabSelected]?.["TFJ"]?.["sts_corr"] && (
+        {parameters?.[tabSelected]?.["TFJ"]?.["param1"] && (
           <div style={{ marginLeft: "40px" }}>
             <Checkbox
-              name="cargo"
+              name="param11"
               value={true}
-              checked={parameters?.[tabSelected]?.["TFJ"]?.["cargo"]}
+              checked={parameters?.[tabSelected]?.["TFJ"]?.["param11"]}
               handleChange={(e) => {
                 handleCheckboxChange(e, "TFJ");
                 handleCheckboxChange(
-                  { target: { value: false, name: "bunker" } },
+                  { target: { value: false, name: "param12" } },
                   "TFJ"
                 );
-                !parameters?.[tabSelected]?.["TFJ"]?.["cargo"] &&
-                  setImageModal(true);
+                // !parameters?.[tabSelected]?.["TFJ"]?.["param11"] &&
+                //   setImageModal(true);
               }}
               label="Cargo oil transfer from a vessel’s cargo tank to another vessel’s cargo tank."
             />
+            {parameters?.[tabSelected]?.["TFJ"]?.["param1"] &&
+              parameters?.[tabSelected]?.["TFJ"]?.["param11"] && (
+                <div className="input-parameter-container">
+                  <span>FC s j = </span>
+                  <CustomInput
+                    type="number"
+                    name="fcs_j"
+                    onChange={(e) => handleChange(e, "TFJ")}
+                    value={parameters?.[tabSelected]?.["TFJ"]?.["fcs_j"]}
+                    placeholder="Enter Value"
+                  />
+                </div>
+              )}
             <Checkbox
-              name="bunker"
+              name="param12"
               value={true}
-              checked={parameters?.[tabSelected]?.["TFJ"]?.["bunker"]}
+              checked={parameters?.[tabSelected]?.["TFJ"]?.["param12"]}
               handleChange={(e) => {
                 handleCheckboxChange(e, "TFJ");
                 handleCheckboxChange(
-                  { target: { value: false, name: "cargo" } },
+                  { target: { value: false, name: "param11" } },
                   "TFJ"
                 );
               }}
@@ -96,41 +122,41 @@ export default function TFJ({ tabSelected }) {
           </div>
         )}
         <Checkbox
-          name="st_corr"
+          name="param2"
           value={true}
-          checked={parameters?.[tabSelected]?.["TFJ"]?.["st_corr"]}
+          checked={parameters?.[tabSelected]?.["TFJ"]?.["param2"]}
           handleChange={(e) => {
             handleCheckboxChange(e, "TFJ");
             handleCheckboxChange(
-              { target: { value: false, name: "sts_corr" } },
+              { target: { value: false, name: "param1" } },
               "TFJ"
             );
           }}
           label="Shutle Tankers correction"
         />
-        {parameters?.[tabSelected]?.["TFJ"]?.["st_corr"] && (
+        {parameters?.[tabSelected]?.["TFJ"]?.["param2"] && (
           <div style={{ marginLeft: "40px" }}>
             <Checkbox
-              name="tankers"
+              name="param21"
               value={true}
-              checked={parameters?.[tabSelected]?.["TFJ"]?.["tankers"]}
+              checked={parameters?.[tabSelected]?.["TFJ"]?.["param21"]}
               handleChange={(e) => {
                 handleCheckboxChange(e, "TFJ");
                 handleCheckboxChange(
-                  { target: { value: false, name: "capable" } },
+                  { target: { value: false, name: "param22" } },
                   "TFJ"
                 );
               }}
               label="Tankers (shutle tankers) equipped with dynamic positioning."
             />
             <Checkbox
-              name="capable"
+              name="param22"
               value={true}
-              checked={parameters?.[tabSelected]?.["TFJ"]?.["capable"]}
+              checked={parameters?.[tabSelected]?.["TFJ"]?.["param22"]}
               handleChange={(e) => {
                 handleCheckboxChange(e, "TFJ");
                 handleCheckboxChange(
-                  { target: { value: false, name: "tankers" } },
+                  { target: { value: false, name: "param21" } },
                   "TFJ"
                 );
               }}
@@ -138,16 +164,6 @@ export default function TFJ({ tabSelected }) {
             />
           </div>
         )}
-        {/* <div className="input-parameter-container">
-          <span>TFj = </span>
-          <CustomInput
-            name="tfj"
-            type="number"
-            onChange={(e) => handleChange(e, "TFJ")}
-            value={parameters?.[tabSelected]?.["TFJ"]?.["tfj"]}
-            placeholder="Enter Value"
-          />
-        </div> */}
         {showImageModal && (
           <ImageModal tabSelected={tabSelected} setImageModal={setImageModal} />
         )}
