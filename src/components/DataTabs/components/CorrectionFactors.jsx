@@ -5,8 +5,6 @@ import CustomInput from "../../Input/Input";
 export default function CorrectionFactors({ tabSelected }) {
   const { parameters, setParameters } = useContext(CalculationContext);
 
-  console.log("parameters?.data?.iceclass", parameters?.details.data?.iceclass);
-
   return (
     <div className="correction-factors-container" id="container10">
       <span>Correction Factors</span>

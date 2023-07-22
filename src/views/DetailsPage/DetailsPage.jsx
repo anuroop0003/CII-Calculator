@@ -206,7 +206,7 @@ const DetailsPage = () => {
         imonumber: "123456789",
         yearofbuild: "2000",
         numberoffuels: "5",
-        iceclass: "",
+        iceclass: "1",
         flag: "India",
         numberofyears: [2022],
         numberofengine_main: "1",
@@ -225,7 +225,8 @@ const DetailsPage = () => {
       onSubmit={(values) => {
         setParameters((prev) => ({
           ...prev,
-          details: { data: values, visible: true },
+          details: values,
+          showDataTabs: true,
         }));
       }}
     >
@@ -572,9 +573,9 @@ const DetailsPage = () => {
           <div className="calculate-button-container" id="container6">
             <CustomButton onClick={handleSubmit} label={"Enter Data"} />
           </div>
-          {parameters?.details?.visible && (
+          {parameters?.showDataTabs && (
             <div style={{ margin: "20px" }} id="main-container1">
-              <DataTabs state={parameters?.details?.data} />
+              <DataTabs state={parameters?.details} />
             </div>
           )}
         </main>

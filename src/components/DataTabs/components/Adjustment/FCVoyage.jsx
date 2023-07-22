@@ -61,33 +61,33 @@ export default function FCVoyage({ tabSelected }) {
       <p>FC voyage j</p>
       <div>
         <Checkbox
-          name="safe"
+          name="param1"
           value={true}
-          checked={parameters?.[tabSelected]?.["FCV"]?.["safe"]}
+          checked={parameters?.[tabSelected]?.["FCV"]?.["param1"]}
           handleChange={(e) => {
             handleCheckboxChange(e, "FCV");
             handleCheckboxChange(
-              { target: { value: false, name: "ice" } },
+              { target: { value: false, name: "param2" } },
               "FCV"
             );
           }}
           label="Endanger safe navigation of a ship"
         />
         <Checkbox
-          name="ice"
-          checked={parameters?.[tabSelected]?.["FCV"]?.["ice"]}
+          name="param2"
+          checked={parameters?.[tabSelected]?.["FCV"]?.["param2"]}
           value={true}
           handleChange={(e) => {
             handleCheckboxChange(e, "FCV");
             handleCheckboxChange(
-              { target: { value: false, name: "safe" } },
+              { target: { value: false, name: "param1" } },
               "FCV"
             );
           }}
           label="Sailing in ice conditions"
         />
-        {(parameters?.[tabSelected]?.["FCV"]?.["ice"] ||
-          parameters?.[tabSelected]?.["FCV"]?.["safe"]) && (
+        {(parameters?.[tabSelected]?.["FCV"]?.["param2"] ||
+          parameters?.[tabSelected]?.["FCV"]?.["param1"]) && (
           <>
             <div className="input-parameter-container">
               <span>FC voyage j = </span>

@@ -64,7 +64,17 @@ const FCElectrical = ({ tabSelected }) => {
           name="param1"
           checked={parameters?.[tabSelected]?.["FCE"]?.["param1"]}
           value={true}
-          handleChange={(e) => handleCheckboxChange(e, "FCE")}
+          handleChange={(e) => {
+            handleCheckboxChange(e, "FCE");
+            handleCheckboxChange(
+              { target: { value: false, name: "param2" } },
+              "FCE"
+            );
+            handleCheckboxChange(
+              { target: { value: false, name: "param3" } },
+              "FCE"
+            );
+          }}
           label="Refrigerated containers"
         />
         {parameters?.[tabSelected]?.["FCE"]?.["param1"] && (
@@ -99,9 +109,9 @@ const FCElectrical = ({ tabSelected }) => {
                     <span>SFOC = </span>
                     <CustomInput
                       type="number"
-                      name="sfoc1"
+                      name="sfoc11"
                       onChange={(e) => handleChange(e, "FCE")}
-                      value={parameters?.[tabSelected]?.["FCE"]?.["sfoc1"]}
+                      value={parameters?.[tabSelected]?.["FCE"]?.["sfoc11"]}
                       placeholder="Enter Value"
                     />
                   </div>
@@ -188,7 +198,17 @@ const FCElectrical = ({ tabSelected }) => {
           name="param2"
           checked={parameters?.[tabSelected]?.["FCE"]?.["param2"]}
           value={true}
-          handleChange={(e) => handleCheckboxChange(e, "FCE")}
+          handleChange={(e) => {
+            handleCheckboxChange(e, "FCE");
+            handleCheckboxChange(
+              { target: { value: false, name: "param1" } },
+              "FCE"
+            );
+            handleCheckboxChange(
+              { target: { value: false, name: "param3" } },
+              "FCE"
+            );
+          }}
           label="Cargo cooling systems on gas carriers and LNG carriers"
         />
         {parameters?.[tabSelected]?.["FCE"]?.["param2"] && (
@@ -208,9 +228,9 @@ const FCElectrical = ({ tabSelected }) => {
               <CustomInput
                 type="number"
                 inputmode="numeric"
-                name="sfoc2"
+                name="sfoc21"
                 onChange={(e) => handleChange(e, "FCE")}
-                value={parameters?.[tabSelected]?.["FCE"]?.["sfoc2"]}
+                value={parameters?.[tabSelected]?.["FCE"]?.["sfoc21"]}
                 placeholder="Enter Value"
               />
             </div>
@@ -220,7 +240,17 @@ const FCElectrical = ({ tabSelected }) => {
           name="param3"
           checked={parameters?.[tabSelected]?.["FCE"]?.["param3"]}
           value={true}
-          handleChange={(e) => handleCheckboxChange(e, "FCE")}
+          handleChange={(e) => {
+            handleCheckboxChange(e, "FCE");
+            handleCheckboxChange(
+              { target: { value: false, name: "param1" } },
+              "FCE"
+            );
+            handleCheckboxChange(
+              { target: { value: false, name: "param2" } },
+              "FCE"
+            );
+          }}
           label="Electrical cargo discharge pumps on tankers"
         />
         {parameters?.[tabSelected]?.["FCE"]?.["param3"] && (
@@ -241,9 +271,9 @@ const FCElectrical = ({ tabSelected }) => {
               <CustomInput
                 type="number"
                 inputmode="numeric"
-                name="sfoc3"
+                name="sfoc31"
                 onChange={(e) => handleChange(e, "FCE")}
-                value={parameters?.[tabSelected]?.["FCE"]?.["sfoc3"]}
+                value={parameters?.[tabSelected]?.["FCE"]?.["sfoc31"]}
                 placeholder="Enter Value"
               />
             </div>

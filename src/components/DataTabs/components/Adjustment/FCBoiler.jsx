@@ -1,6 +1,7 @@
 import { useContext, useEffect } from "react";
 import { CalculationContext } from "../../../../state management/ContextProvider";
 import Checkbox from "../../../Input/Checkbox/Checkbox";
+import CustomInput from "../../../Input/Input";
 
 export default function FCBoiler({ tabSelected }) {
   const { parameters, setParameters } = useContext(CalculationContext);
@@ -44,6 +45,19 @@ export default function FCBoiler({ tabSelected }) {
     }
   };
 
+  const handleChange = (e, key) => {
+    setParameters((prev) => ({
+      ...prev,
+      [tabSelected]: {
+        ...prev[tabSelected],
+        [key]: {
+          ...prev?.[tabSelected]?.[key],
+          [e.target.name]: Number(e.target.value),
+        },
+      },
+    }));
+  };
+
   return (
     <div className="parameters-outer-warapper">
       <p>FC boiler j</p>
@@ -52,16 +66,41 @@ export default function FCBoiler({ tabSelected }) {
           name="param1"
           checked={parameters?.[tabSelected]?.["FCB"]?.["param1"]}
           value={true}
-          handleChange={(e) => handleCheckboxChange(e, "FCB")}
+          handleChange={(e) => {
+            handleCheckboxChange(e, "FCB");
+            handleCheckboxChange(
+              { target: { value: false, name: "param2" } },
+              "FCB"
+            );
+          }}
           label="Boilers used for cargo heating"
         />
         <Checkbox
           name="param2"
           checked={parameters?.[tabSelected]?.["FCB"]?.["param2"]}
           value={true}
-          handleChange={(e) => handleCheckboxChange(e, "FCB")}
+          handleChange={(e) => {
+            handleCheckboxChange(e, "FCB");
+            handleCheckboxChange(
+              { target: { value: false, name: "param1" } },
+              "FCB"
+            );
+          }}
           label="Tankers which use steam driven cargo pumps"
         />
+        {(parameters?.[tabSelected]?.["FCB"]?.["param1"] ||
+          parameters?.[tabSelected]?.["FCB"]?.["param2"]) && (
+          <div className="input-parameter-container">
+            <span>value = </span>
+            <CustomInput
+              type="number"
+              name="fc_boiler"
+              onChange={(e) => handleChange(e, "FCB")}
+              value={parameters?.[tabSelected]?.["FCB"]?.["fc_boiler"]}
+              placeholder="Enter Value"
+            />
+          </div>
+        )}
       </div>
     </div>
   );

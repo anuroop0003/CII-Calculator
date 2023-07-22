@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
+import ResultPage from "../../views/ResultPage/ResultPage";
 import Adjustment from "./components/Adjustment";
 import CorrectionFactors from "./components/CorrectionFactors";
 import FuelTypes from "./components/FuelTypes";
@@ -39,6 +40,7 @@ const DataTabs = ({ state }) => {
       <Adjustment tabSelected={tabSelected} />
       <CorrectionFactors tabSelected={tabSelected} />
       <VoluntaryCII tabSelected={tabSelected} />
+      <ResultPage />
     </div>
   );
 };
