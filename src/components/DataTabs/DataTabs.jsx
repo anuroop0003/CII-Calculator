@@ -20,6 +20,7 @@ const DataTabs = ({ state }) => {
   }, []);
 
   const [tabSelected, setTabSelected] = useState(state.numberofyears[0]);
+  const [showResult, setShowResult] = useState(false);
   return (
     <div className="datatabs-container">
       <div className="tabs-container" id="container7">
@@ -40,7 +41,10 @@ const DataTabs = ({ state }) => {
       <Adjustment tabSelected={tabSelected} />
       <CorrectionFactors tabSelected={tabSelected} />
       <VoluntaryCII tabSelected={tabSelected} />
-      <ResultPage />
+      <button onClick={() => setShowResult(!showResult)}>
+        Generate Result
+      </button>
+      {showResult && <ResultPage />}
     </div>
   );
 };

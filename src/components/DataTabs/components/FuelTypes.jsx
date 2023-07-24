@@ -234,10 +234,10 @@ export default function FuelTypes({ tabSelected, state }) {
             <div className="title-div">Annual Distance Travelled</div>
             <CustomInput
               type="number"
-              name="anuualdistance"
+              name="annualdistance"
               onChange={(e) => handleChange(e, "fuelData")}
               value={
-                parameters?.[tabSelected]?.["fuelData"]?.["anuualdistance"]
+                parameters?.[tabSelected]?.["fuelData"]?.["annualdistance"]
               }
               placeholder="Enter Value"
             />
