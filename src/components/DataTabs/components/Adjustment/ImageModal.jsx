@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import { useContext, useEffect } from "react";
 import ModalImg from "../../../../assets/imagemodal.jpg";
 import { CalculationContext } from "../../../../state management/ContextProvider";
 import Checkbox from "../../../Input/Checkbox/Checkbox";

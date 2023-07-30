@@ -1,6 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 import Layouter from "./layouts";
-import { PrivateRoute, PublicRoute } from "./routes/ProtectedRoute";
+import ProtectedRoute from "./routes/ProtectedRoute";
 import { ContextProvider } from "./state management/ContextProvider";
 import DetailsPage from "./views/DetailsPage/DetailsPage";
 import HomePage from "./views/HomePage/HomePage";
@@ -11,10 +11,8 @@ function App() {
   return (
     <ContextProvider>
       <Routes>
-        <Route element={<PublicRoute />}>
-          <Route path="/" element={<LoginPage />} />
-        </Route>
-        <Route element={<PrivateRoute />}>
+        <Route path="/" index element={<LoginPage />} />
+        <Route element={<ProtectedRoute />}>
           <Route element={<Layouter />}>
             <Route path="/home" element={<HomePage />} />
             <Route path="/details" element={<DetailsPage />} />

@@ -211,7 +211,6 @@ const DetailsPage = () => {
       };
       reader.readAsArrayBuffer(e.target.files[0]);
     }
-    // console.log(e);
   }
   return (
     <Formik

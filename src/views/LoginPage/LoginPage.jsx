@@ -1,5 +1,4 @@
 import { signInWithPopup } from "firebase/auth";
-import React from "react";
 import { useNavigate } from "react-router-dom";
 import Ellipse1 from "../../assets/login/Ellipse1.svg";
 import Ellipse2 from "../../assets/login/Ellipse2.svg";
