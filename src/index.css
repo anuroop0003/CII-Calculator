@@ -4,6 +4,10 @@
   font-size: 18px;
 }
 
+body {
+  overflow: hidden;
+}
+
 /* Conatiner Grid handle */
 @media screen and (max-width: 750px) {
   * {

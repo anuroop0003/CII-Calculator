@@ -1,8 +1,11 @@
 import { Formik } from "formik";
 import { useContext } from "react";
+import { read, utils } from "xlsx";
 import * as Yup from "yup";
 import CustomButton from "../../components/Button/Button";
 import DataTabs from "../../components/DataTabs/DataTabs";
+import FileDownloader from "../../components/FileDownloader";
+import FileUploader from "../../components/FileUploader";
 import Checkbox from "../../components/Input/Checkbox/Checkbox";
 import CustomInput from "../../components/Input/Input";
 import CustomSelect from "../../components/Select/CustomSelect";
@@ -191,6 +194,25 @@ const schema = Yup.object().shape({
 
 const DetailsPage = () => {
   const { parameters, setParameters } = useContext(CalculationContext);
+
+  function handleFileChange(e) {
+    e.preventDefault();
+    if (e.target.files) {
+      document.getElementById("file-uploader-title").innerHTML =
+        e.target.files[0].name;
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        const data = e.target.result;
+        const workbook = read(data, { type: "array" });
+        const sheetName = workbook.SheetNames[0];
+        const workSheet = workbook.Sheets[sheetName];
+        const json = utils.sheet_to_json(workSheet);
+        console.log(json);
+      };
+      reader.readAsArrayBuffer(e.target.files[0]);
+    }
+    // console.log(e);
+  }
   return (
     <Formik
       validationSchema={schema}
@@ -573,6 +595,8 @@ const DetailsPage = () => {
           <div className="calculate-button-container" id="container6">
             <CustomButton onClick={handleSubmit} label={"Enter Data"} />
           </div>
+          <FileUploader handleFileChange={handleFileChange} />
+          <FileDownloader />
           {parameters?.showDataTabs && (
             <div style={{ margin: "20px" }} id="main-container1">
               <DataTabs state={parameters?.details} />

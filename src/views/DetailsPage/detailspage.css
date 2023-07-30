@@ -3,7 +3,6 @@
   margin: 20px;
   border: 5px solid #091242;
   border-radius: 10px;
-  overflow: hidden;
 }
 
 .personal-info-container-title {
@@ -54,7 +53,7 @@
 .calculate-button-container {
   display: flex;
   justify-content: center;
-  margin: 50px 0;
+  margin: 50px 0 100px 0;
 }
 
 /* Parameters Selection */
@@ -96,3 +95,5 @@
 .engine-parameters-container div {
   width: calc(50% - 20px);
 }
+
+/* File Uploader Container */

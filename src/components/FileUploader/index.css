@@ -1,0 +1,33 @@
+.file-uploader-container {
+  border: 1px solid #091242;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  border-radius: 10px;
+  width: 50%;
+  justify-content: space-between;
+  margin: 0 auto 100px auto;
+}
+
+.file-uploader-container > p {
+  text-align: center;
+  flex-grow: 1;
+}
+
+.file-uploader-container > input {
+  width: 0;
+  height: 0;
+  overflow: hidden;
+}
+
+.file-uploader-container > button {
+  background-color: #091242;
+  border-radius: inherit;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  padding: 10px 20px;
+  font-size: 18px;
+  border: none;
+  color: white;
+  cursor: pointer;
+}

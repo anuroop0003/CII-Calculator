@@ -1,21 +1,29 @@
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import LogoImg from "../../assets/logo.png";
+
 import "./homepage.css";
 
 const HomePage = () => {
-  const navigation = useNavigate();
+  const navigate = useNavigate();
 
-  const handleNavigation = (key) => {
-    navigation(`/${key}`);
-  };
+  let vh = window.innerHeight * 0.01;
+  // Then we set the value in the --vh custom property to the root of the document
+  // document.documentElement.style.setProperty("--vh", `${vh}px`);
+
+  useEffect(() => {
+    const disableBackButton = (event) => {
+      event.preventDefault();
+      history.pushState(null, null, "/home"); // Replace '/' with the desired route when logged in.
+    };
+    history.pushState(null, null, window.location.pathname);
+    window.addEventListener("popstate", disableBackButton);
+    return () => {
+      window.removeEventListener("popstate", disableBackButton);
+    };
+  }, [navigate]);
+
   return (
     <div className="homepage-container">
-      <img src={LogoImg} />
-      <div className="homepage-header">
-        <span onClick={() => handleNavigation("details")}>CII Calculator</span>
-        <span onClick={() => handleNavigation("result")}>Rules</span>
-        <span onClick={() => alert("No page available")}>Help</span>
-      </div>
       <div className="homepage-body">
         <span className="sub-title">CII – Carbon Intensity Indicator</span>
         <h1 className="title">
